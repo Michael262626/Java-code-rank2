@@ -16,9 +16,5 @@ import static org.junit.jupiter.api.Assertions.*;
         public void testToThrowExceptionForNumberLessThan0(){
             int number = -1;
             assertThrows(InvalidNumberError.class, ()-> RidersWage.wage(number));
-
-
         }
-
-
     }

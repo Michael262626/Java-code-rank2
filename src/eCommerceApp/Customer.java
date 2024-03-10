@@ -7,7 +7,6 @@ public class Customer extends User{
         super(userName, password, email, homeAddress);
         this.deliveryAddress = deliverAddress;
     }
-
     public String getDeliveryAddress() {
         return deliveryAddress;
     }

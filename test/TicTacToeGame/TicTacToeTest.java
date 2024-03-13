@@ -1,6 +1,5 @@
 package TicTacToeGame;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static TicTacToeGame.Cell.*;
@@ -38,7 +37,7 @@ class TicTacToeTest {
     public void testForMovesOutOfTheCells() {
         TicTacToe.initializeBoard(TicTacToe.board);
         assertThrows(InvalidMoveError.class, () -> TicTacToe.isValidMove(TicTacToe.board, 0, 9));
-    }
+
 
     @Test
     void checkWinner() {

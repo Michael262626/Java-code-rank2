@@ -37,7 +37,7 @@ class TicTacToeTest {
     public void testForMovesOutOfTheCells() {
         TicTacToe.initializeBoard(TicTacToe.board);
         assertThrows(InvalidMoveError.class, () -> TicTacToe.isValidMove(TicTacToe.board, 0, 9));
-
+    }
 
     @Test
     void checkWinner() {

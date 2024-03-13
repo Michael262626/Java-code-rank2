@@ -5,24 +5,26 @@ import static Turtle.CurrentPosition.*;
 public class TurtleDirection {
     private boolean penIsUp = true;
     private CurrentPosition currentPosition = EAST;
+
     public boolean penIsUp() {
         return penIsUp;
     }
-    public boolean penIsDown(){
+    public boolean penIsDown() {
         return false;
     }
 
-public CurrentPosition getCurrentPosition() {
+    public CurrentPosition getCurrentPosition() {
         return currentPosition;
     }
 
     public void turnLeft() {
-        CurrentPosition.turnLeft();
-//        switch (currentPosition) {
-//            case SOUTH -> currentPosition = EAST;
-//            case WEST -> currentPosition = SOUTH;
-//            case NORTH -> currentPosition = WEST;
-//            case EAST -> currentPosition = NORTH;
+
+        switch (currentPosition) {
+            case SOUTH -> currentPosition = EAST;
+            case WEST -> currentPosition = SOUTH;
+            case NORTH -> currentPosition = WEST;
+            case EAST -> currentPosition = NORTH;
         }
     }
+}
 

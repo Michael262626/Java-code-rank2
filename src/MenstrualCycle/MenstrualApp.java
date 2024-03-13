@@ -41,7 +41,7 @@ public class MenstrualApp {
 
     public void setMensesPhaseLength(int userMensesPhaseLength) {
         if (userMensesPhaseLength < 3 || userMensesPhaseLength > 7) {
-            throw new IllegalArgumentException("Irregular menstrual cycle detected ===> Please consult a physician.");
+            throw new IllegalArgumentException("Irregular menstrual cycle detected.....\nPlease consult a physician.");
         }
 
         mensesPhaseLength = userMensesPhaseLength;
@@ -53,7 +53,7 @@ public class MenstrualApp {
 
     public void setAverageCycleLength(int userAverageCycleLength) {
         if (userAverageCycleLength < 21 || userAverageCycleLength > 35) {
-            throw new IllegalArgumentException("Irregular menstrual cycle detected ===> Please consult a physician.");
+            throw new IllegalArgumentException("Irregular menstrual cycle detected\n Please consult a physician.");
         }
 
         averageCycleLength = userAverageCycleLength;

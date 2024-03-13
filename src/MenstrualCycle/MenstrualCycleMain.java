@@ -30,8 +30,9 @@ public class MenstrualCycleMain {
 
             print("""
                             
-                Note: This period tracker is only an estimation. Your unique menstrual cycle
-                may vary from these results.""");
+                Note: The app is designed to help you track your menstrual cycle and understand patterns over time.\s
+                However, individual experiences may vary, and the app does not guarantee the accuracy, completeness, or reliability of any information provided.
+                                               .""");
         }
 
         private static void setCycleLength() {

@@ -1,15 +1,15 @@
-package MenstralApp;
+package MenstrualCycle;
 
 
 
 public class MenstrualApp {
-    private User user;
+    private final User user;
     private int previousPeriodDay;
     private int previousPeriodMonth;
     private int previousPeriodYear;
     private Date previousPeriodStartDate;
-    private Date ovulationDate;
-    private Date nextPeriodStartDate;
+    private final Date ovulationDate;
+    private final Date nextPeriodStartDate;
     private int mensesPhaseLength;
     private int averageCycleLength;
 
@@ -79,7 +79,6 @@ public class MenstrualApp {
         previousPeriodStartDate = nextPeriodStartDate;
 
     }
-
     public Date getNextPeriodStartDate() {
         return nextPeriodStartDate;
     }

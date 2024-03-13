@@ -1,4 +1,4 @@
-package MenstralApp;
+package MenstrualCycle;
 
 public class Date {
         private int month;

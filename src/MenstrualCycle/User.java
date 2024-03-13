@@ -1,8 +1,8 @@
-package MenstralApp;
+package MenstrualCycle;
 
 public class User {
 
-        private String lastPeriodDate;
+        private final String lastPeriodDate;
 
         public User(String lastPeriodDate) {
             this.lastPeriodDate = lastPeriodDate;
@@ -11,16 +11,14 @@ public class User {
             return lastPeriodDate;
         }
 
-        public void calculateMenstrualCycle(MenstrualCycleTracker cycleTracker) {
+        public void calculateMenstrualCycle(MenstrualApp cycleTracker) {
             getNextOvulationDay(cycleTracker);
             getNextPeriodDay(cycleTracker);
         }
-
-        private void getNextOvulationDay(MenstrualCycleTracker cycleTracker) {
+        private void getNextOvulationDay(MenstrualApp cycleTracker) {
             cycleTracker.calculateNextOvulationDate();
         }
-
-        private void getNextPeriodDay(MenstrualCycleTracker cycleTracker) {
+        private void getNextPeriodDay(MenstrualApp cycleTracker) {
             cycleTracker.calculateNextPeriodDate();
         }
     }

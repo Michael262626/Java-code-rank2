@@ -1,61 +1,88 @@
 package MenstralApp;
 
-import java.time.LocalDate;
-import java.util.Scanner;
+
 
 public class MenstrualApp {
-    Scanner scanner = new Scanner(System.in);
-    LocalDate date = LocalDate.now();
-    private final int[] month ={31,28,31,30,31,30,31,31,30,31,30,31};
-    private int lastFlowYear;
-    private int lastFlowMonth;
-    private int lastFlowDay;
-    private int nextFlowDay;
-    private int nextFlowMonth;
-    private int nextFlowYear;
-    private int nextFlowStopYear;
-    private int nextFlowStopMonth;
-    private int nextFlowStopDay;
-    private int yearOfBirth;
-    private String userName;
-    private String gender;
-    public int flow;
-    public MenstrualApp(int lastFlowYear, int lastFlowMonth, int lastFlowDay){
-        this.lastFlowDay = lastFlowDay;
-        this.lastFlowMonth = lastFlowMonth;
-        this.lastFlowYear = lastFlowYear;
+    private User user;
+    private int previousPeriodDay;
+    private int previousPeriodMonth;
+    private int previousPeriodYear;
+    private Date previousPeriodStartDate;
+    private Date ovulationDate;
+    private Date nextPeriodStartDate;
+    private int mensesPhaseLength;
+    private int averageCycleLength;
+
+    public MenstrualApp(String lastPeriodDate) {
+        user = new User(lastPeriodDate);
+
+        setPeriodStartDate(user.getLastPeriodDate());
+        previousPeriodStartDate = new Date(previousPeriodDay,previousPeriodMonth, previousPeriodYear);
+
+        ovulationDate = new Date(previousPeriodDay,previousPeriodMonth, previousPeriodYear);
+        nextPeriodStartDate = new Date(previousPeriodDay, previousPeriodMonth, previousPeriodYear);
     }
-    public void setLastFlowYear(int lastFlowYear){
-        if(lastFlowYear > date.getYear()){
-            while(lastFlowYear > date.getYear()){
-                System.out.println("Please enter a valid year!!");
-                lastFlowYear= scanner.nextInt();
-            }
-            this.lastFlowYear = lastFlowYear;
+
+    public User getUser() {
+        return user;
+    }
+
+    private void setPeriodStartDate(String lastPeriodDate) {
+        String[] dayMonthYear = lastPeriodDate.split("/");
+
+        int day = Integer.parseInt(dayMonthYear[0]);
+        int month = Integer.parseInt(dayMonthYear[1]);
+        int year = Integer.parseInt(dayMonthYear[2]);
+
+        previousPeriodDay = day;
+        previousPeriodMonth = month;
+        previousPeriodYear = year;
+    }
+
+    public void setMensesPhaseLength(int userMensesPhaseLength) {
+        if (userMensesPhaseLength < 3 || userMensesPhaseLength > 7) {
+            throw new IllegalArgumentException("Irregular menstrual cycle detected ===> Please consult a physician.");
         }
+
+        mensesPhaseLength = userMensesPhaseLength;
     }
-    public int getLastFlowYear(){
-        return lastFlowYear;
+
+    public int getMensesPhaseLength() {
+        return mensesPhaseLength;
     }
-    public void setLastFlowDay(int lastFlowDay){
-        while (lastFlowDay < 1 || lastFlowDay > month[getLastFlowMonth()-1]){
-            System.out.println("please enter a valid month");
+
+    public void setAverageCycleLength(int userAverageCycleLength) {
+        if (userAverageCycleLength < 21 || userAverageCycleLength > 35) {
+            throw new IllegalArgumentException("Irregular menstrual cycle detected ===> Please consult a physician.");
         }
-        this.lastFlowDay = lastFlowDay;
+
+        averageCycleLength = userAverageCycleLength;
     }
-    public int getLastFlowDay(){
-        return lastFlowDay;
-    }
-    public void setLastFlowMonth(int lastFlowMonth) {
-        while(lastFlowMonth < 1 || lastFlowMonth > month.length){
-            System.out.println("Please enter a valid month of your last flow");
-        }
-        this.lastFlowMonth = lastFlowMonth;
-    }
-    public int getLastFlowMonth(){
-        return lastFlowMonth;
-    }
-    public void setNextFlowDay(){
+
+    public void calculateNextOvulationDate() {
+        setPeriodStartDate(previousPeriodStartDate.toString());
+        ovulationDate.setDate(previousPeriodDay, previousPeriodMonth, previousPeriodYear);
+
+        int length = averageCycleLength >= 28 ? (averageCycleLength - 28) + 14 : 14 - (28 - averageCycleLength);
+
+        for (int count = 1; count <= length; count++) ovulationDate.nextDay();
 
     }
+
+    public Date getOvulationDate() {
+        return ovulationDate;
+    }
+
+    public void calculateNextPeriodDate() {
+        for (int count = 1; count <= averageCycleLength; count++) nextPeriodStartDate.nextDay();
+
+        previousPeriodStartDate = nextPeriodStartDate;
+
+    }
+
+    public Date getNextPeriodStartDate() {
+        return nextPeriodStartDate;
+    }
+
+
 }

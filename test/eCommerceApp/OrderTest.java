@@ -17,7 +17,7 @@ class OrderTest {
         List<Product> items = new ArrayList<>();
         items.add(product);
         Order myorder = new Order(1, myCustomer, 250_000, items, cardType);
-        assertEquals(, );
+        //assertEquals(, );
     }
 
 }

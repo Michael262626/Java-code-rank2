@@ -1,14 +1,14 @@
 package TicTacToeGame;
     public enum Cell {
-        X('X'),
-        O('O'),
-        EMPTY('-');
-        private final char value;
+        X("X"),
+        O("O"),
+        EMPTY("   ");
+        private final String value;
 
-        Cell (char value){
+        Cell (String value){
             this.value = value;
         }
-        public char getValue() {
+        public String getValue() {
             return value;
         }
     }

@@ -14,23 +14,25 @@ public class TicTacToe {
             System.out.println(currentPlayer.getName() + "enter your move 1 - 9");
             int move = scanner.nextInt();
             int row = (move - 1) / 3;
-            int coloumn = (move - 1) % 3;
+            int column = (move - 1) % 3;
             try {
-                if (isValidMove(board, row, coloumn)) {
-                    board[row][coloumn] = currentPlayer.getCell();
-                    if (checkWin(board, currentPlayer.getCell())) {
-                        displayBoard();
-                        System.out.println(currentPlayer.getName() + "Wins");
-                        gameOver = true;
+                if (isValidMove(board, row, column)) {
+                    board[row][column] = currentPlayer.getCell();
+                        if (checkWin(board, currentPlayer.getCell())) {
+                            displayBoard();
+                            System.out.println(currentPlayer.getName() + "Wins");
+                            gameOver = true;
 
-                    } else if (isBoardFull(board)) {
-                        displayBoard();
-                        System.out.println("It's a draw");
-                        gameOver = true;
-                    } else {
-                        currentPlayer = (currentPlayer == player1) ? player2 : player1;
+                        } else if (isBoardFull(board)) {
+                            displayBoard();
+                            System.out.println("It's a draw");
+                            gameOver = true;
+                        } else {
+                            currentPlayer = (currentPlayer == player1) ? player2 : player1;
+                        }
+                    } else{
+                        System.out.println("Invalid input");
                     }
-                }
             }
             catch(Exception e){
                 System.out.println(e.getMessage());
@@ -50,13 +52,13 @@ public class TicTacToe {
     public static void initializeBoard(Cell[][] board) {
         for (int count = 0; count < 3; count++) {
             for (int counter = 0; counter < 3; counter++) {
-                System.out.print(board[count][counter] = Cell.EMPTY);
+                System.out.printf(" %s ", board[count][counter] = Cell.EMPTY);
             }
         }
     }
     public static boolean isValidMove(Cell[][] board, int row, int column) {
         if (row >= 0 && row <= 3 && column >= 0 && column <= 3 && board[row][column] == Cell.EMPTY) return true;
-        throw new InvalidMoveError("Error: cell is occupied");
+        throw new InvalidMoveError("Error: Invalid move");
     }
     static boolean checkWin(Cell[][] board, Cell cell) {
         for (int count = 0; count < 3; count++) {
@@ -64,7 +66,7 @@ public class TicTacToe {
                     board[0][count] == cell && board[1][count] == cell && board[2][count] == cell)
                 return true;
         }
-        return board[2][2] == cell && board[1][1] == cell && board[0][0] == cell;
+        return board[2][2] == cell && board[1][1] == cell && board[0][0] == cell || board[2][0] == cell && board[1][1] == cell && board[0][2] == cell;
     }
     public static boolean isBoardFull(Cell[][] board) {
         for (int count = 0; count < 3; count++) {

@@ -7,12 +7,24 @@ public class TicTacToe {
     static Cell[][] board = new Cell[3][3];
 
     static Player currentPlayer = player1;
+    static int validateMove(){
+        int move = 0;
+        try {
+            System.out.println("Enter a valid input: ");
+            move = scanner.nextInt();
+            return move;
+        }catch(Exception exception){
+            System.out.println("INVALID INPUT ");
+            scanner.next();
+            validateMove();
+        }
+        return move;
+    }
     static void playGame() {
         boolean gameOver = false;
         while (!gameOver) {
             displayBoard();
-            System.out.println(currentPlayer.getName() + "enter your move 1 - 9");
-            int move = scanner.nextInt();
+            int move =validateMove();
             int row = (move - 1) / 3;
             int column = (move - 1) % 3;
             try {

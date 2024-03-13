@@ -48,6 +48,8 @@ public class SevenSegment {
             throw new InvalidNumberException();
         if(number.length() != 8)
             throw new InvalidNumberException();
+        if(Character.isAlphabetic(Integer.parseInt(number)))
+            throw new InvalidNumberException()
     }
 
     public static String segments(String numbers){

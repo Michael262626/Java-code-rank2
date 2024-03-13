@@ -17,10 +17,12 @@ public CurrentPosition getCurrentPosition() {
     }
 
     public void turnLeft() {
-        switch (currentPosition) {
-            case NORTH -> currentPosition = WEST;
-            case EAST -> currentPosition = NORTH;
-
+        CurrentPosition.turnLeft();
+//        switch (currentPosition) {
+//            case SOUTH -> currentPosition = EAST;
+//            case WEST -> currentPosition = SOUTH;
+//            case NORTH -> currentPosition = WEST;
+//            case EAST -> currentPosition = NORTH;
         }
     }
-}
+

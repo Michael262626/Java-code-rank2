@@ -39,17 +39,17 @@ class TicTacToeTest {
         assertThrows(InvalidMoveError.class, () -> TicTacToe.isValidMove(TicTacToe.board, 0, 9));
     }
 
-//    @Test
-//    void checkWinner() {
-//        TicTacToe.initializeBoard(TicTacToe.board);
-//        assertFalse(TicTacToe.checkWin(TicTacToe.board, X));
-//        assertFalse(TicTacToe.checkWin(TicTacToe.board, O));
-//        TicTacToe.board[0][0] = Cell.X;
-//        TicTacToe.board[0][1] = Cell.X;
-//        TicTacToe.board[0][2] = Cell.X;
-//        assertTrue(TicTacToe.checkWin(TicTacToe.board, X));
-//        assertFalse(TicTacToe.checkWin(TicTacToe.board, O));
-//    }
+    @Test
+    void checkWinner() {
+        TicTacToe.initializeBoard(TicTacToe.board);
+        assertFalse(TicTacToe.checkWin(TicTacToe.board, X));
+        assertFalse(TicTacToe.checkWin(TicTacToe.board, O));
+        TicTacToe.board[0][0] = Cell.X;
+        TicTacToe.board[0][1] = Cell.X;
+        TicTacToe.board[0][2] = Cell.X;
+        assertTrue(TicTacToe.checkWin(TicTacToe.board, X));
+        assertFalse(TicTacToe.checkWin(TicTacToe.board, O));
+    }
 
     @Test
     void checkWinner2() {

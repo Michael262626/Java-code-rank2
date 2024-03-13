@@ -49,7 +49,7 @@ public class SevenSegment {
         if(number.length() != 8)
             throw new InvalidNumberException();
         if(Character.isAlphabetic(Integer.parseInt(number)))
-            throw new InvalidNumberException()
+            throw new InvalidNumberException();
     }
 
     public static String segments(String numbers){

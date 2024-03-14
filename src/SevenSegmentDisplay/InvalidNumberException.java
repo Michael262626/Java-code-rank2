@@ -1,5 +1,5 @@
 package SevenSegmentDisplay;
 
 public class InvalidNumberException extends RuntimeException{
-    public InvalidNumberException(){super("Not a valid number");}
+    public InvalidNumberException(String s){super("Not a valid number");}
 }

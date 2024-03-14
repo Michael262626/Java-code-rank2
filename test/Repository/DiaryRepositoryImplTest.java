@@ -34,11 +34,21 @@ class DiaryRepositoryImplTest {
     }
     @Test
     public void testToDeleteDiary(){
-        Diary  diary1 = new Diary("username", "");
+        Diary  diary1 = new Diary("username", "2006");
         myDiary.save(diary1);
         myDiary.deleteDiary(diary1);
         assertEquals(0, myDiary.count());
     }
+    @Test
+    public void testToFindAllDiary(){
+        Diary  diary1 = new Diary("username", "2006");
+        Diary  diary2 = new Diary("username", "2046");
+        myDiary.save(diary1);
+        myDiary.save(diary2);
+        myDiary.findAll();
+        assertEquals(2, myDiary.count());
+    }
+
 
 
 

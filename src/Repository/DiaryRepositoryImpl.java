@@ -15,7 +15,7 @@ public class DiaryRepositoryImpl implements DiaryRepository{
 
     @Override
     public List<Diary> findAll() {
-        return null;
+        return diaries;
     }
 
     @Override
@@ -25,7 +25,6 @@ public class DiaryRepositoryImpl implements DiaryRepository{
         }
         return null;
     }
-
     @Override
     public long count() {
         return diaries.size();

@@ -48,8 +48,4 @@ class DiaryRepositoryImplTest {
         myDiary.findAll();
         assertEquals(2, myDiary.count());
     }
-
-
-
-
 }

@@ -9,6 +9,6 @@ public interface DiaryRepository {
     List<Diary> findAll();
     Diary findById(String username);
     long count();
-    void delete(String username);
-    void delete(Diary diary);
+    void deleteUsername(String username);
+    void deleteDiary(Diary diary);
 }

@@ -36,7 +36,6 @@ public class Entry {
     public void setId(int id) {
         this.id = id;
     }
-
     private String author;
     public Entry(int id, String title, String body, String author){
         this.id = id;

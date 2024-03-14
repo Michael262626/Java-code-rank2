@@ -15,65 +15,52 @@ public class SevenSegment {
         }
     }
 
-    public static String firstMethod(String word) {
-        if (word.charAt(0) == '1')
-            return "# # # #";
-        if (word.charAt(0) == '0')
-            return "          ";
-        return word;
+    public static String indexZero(String number) {
+        if(number.charAt(0) == '1')
+            return "* * * *";
+        return "      ";
+    }
+    public static String indexOne(String number){
+        if(number.charAt(1) == '1' && number.charAt(5) == '1')
+            return "*       *";
+        if(number.charAt(1) == '1' && number.charAt(5) == '0')
+            return "        *"+ "\n        *";
+        if(number.charAt(1) == '0' && number.charAt(5) == '1')
+            return "*        "+  "\n*         ";
+        if(number.charAt(1) == '0' && number.charAt(5) == '0')
+            return "       "+"\n       ";
+        return "";
+
     }
 
-    public static String secondMethod(String word) {
-        if (word.charAt(6) == '1')
-            return "# # # #";
-        if (word.charAt(6) == '0')
-            return "          ";
-        return word;
-    }
-
-    public static String thirdMethod(String word) {
-        if (word.charAt(3) == '1')
-            return "# # # #";
-        if (word.charAt(3) == '0')
-            return "          ";
-        return word;
-    }
-
-    public static String fourthMethod(String word) {
-        if (word.charAt(1) == '1' && word.charAt(5) == '1')
-            return "#       #";
-        if (word.charAt(1) == '1' && word.charAt(5) == '0')
-            return "#         ";
-        if (word.charAt(1) == '0' && word.charAt(5) == '1')
-            return "          #";
-        if (word.charAt(1) == '0' && word.charAt(5) == '0')
-            return "            ";
+    public static String indexTwo(String number) {
+        if(number.charAt(2) == '1' && number.charAt(4) == '1')
+            return "*       *";
+        if(number.charAt(2) == '1' && number.charAt(4) == '0')
+            return "        *\n        *";
+        if(number.charAt(2) == '0' && number.charAt(4) == '1')
+            return "*      \n*      ";
+        if(number.charAt(2) == '0' && number.charAt(4) == '0')
+            return "       \n       ";
         return "";
     }
-
-    public static String fifthMethod(String word) {
-        if (word.charAt(2) == '1' && word.charAt(4) == '1')
-            return "#       #";
-        if (word.charAt(2) == '1' && word.charAt(4) == '0')
-            return "#           ";
-        if (word.charAt(2) == '0' && word.charAt(4) == '1')
-            return "             #";
-        if (word.charAt(1) == '0' && word.charAt(5) == '0')
-            return "              ";
-        return "";
+    public static String indexThree(String number) {
+        if(number.charAt(3) == '1')
+            return "* * * *";
+        return "      ";
     }
+    public static String indexSix(String number) {
+        if(number.charAt(6) == '1')
+            return "* * * *";
+        return "      ";
+    }
+
 
     public static String segments(String numbers) {
         try {
             validate(numbers);
-
-            String segmentPattern = firstMethod(numbers) + "\n" +
-                    fifthMethod((numbers) + "\n" +
-                    thirdMethod((numbers) + "\n" +
-                    fourthMethod((numbers) + "\n" +
-                    secondMethod(numbers))));
-
-            System.out.println(segmentPattern);
+                    System.out.printf ("%s\n%s\n%s\n%s\n%s\n",
+                            indexZero(numbers), indexOne(numbers),indexSix(numbers),indexTwo(numbers),indexThree(numbers));
 
         } catch (InvalidNumberException invalidNumberException) {
             System.out.println("Invalid number.");
@@ -86,7 +73,6 @@ public class SevenSegment {
     public static String display(String numbers) {
         try {
             validate(numbers);
-
             if (numbers.charAt(7) == '1') {
                 return segments(numbers);
             } else {

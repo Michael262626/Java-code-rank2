@@ -8,7 +8,7 @@ public class SevenSegment {
             throw new InvalidNumberException("Input contains non-numeric characters.");
         }
         if (number.length() != 8) {
-            throw new InvalidNumberException("Input length must be 8 characters.");
+            throw new InvalidNumberException("Input length must be 8 characters");
         }
         if (number.matches(".*[a-zA-Z].*")) {
             throw new InvalidNumberException("Input contains alphabetic characters.");

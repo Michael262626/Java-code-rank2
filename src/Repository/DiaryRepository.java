@@ -1,4 +1,4 @@
 package Repository;
 
-public class DiaryRepository {
+public interface DiaryRepository {
 }

@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 public class SevenSegment {
     public static void validate(String number) {
         if (!number.matches("\\d+")) {
-            throw new InvalidNumberException("Input contains non-numeric haracters.");
+            throw new InvalidNumberException("Input contains non-numeric characters.");
         }
         if (number.length() != 8) {
             throw new InvalidNumberException("Input length must be 8 characters.");

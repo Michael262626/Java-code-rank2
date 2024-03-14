@@ -1,4 +1,4 @@
 package Repository;
 
-public class EntryRepositoryImpl {
+public class EntryRepositoryImpl implements EntryRepository{
 }

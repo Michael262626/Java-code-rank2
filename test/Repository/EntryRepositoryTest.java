@@ -20,7 +20,7 @@ class EntryRepositoryTest {
         assertEquals(1, myEntry.countEntry());
     }
     @Test
-    public void testToCreateEntryThenDeleteOneEntry(){
+    public void testToCreateTwoEntryThenDeleteOneEntry(){
         Entry entry1 = new Entry(1, "Semicolon", "Coding", "michael" );
         Entry entry2 = new Entry(2, "Solo leveling", "Sun jin wo", "michael" );
         myEntry.save(entry1);
@@ -35,4 +35,5 @@ class EntryRepositoryTest {
         Entry entry1 = myEntry.findById(1);
         assertEquals(1,myEntry.findById(1).getId());
     }
+
 }

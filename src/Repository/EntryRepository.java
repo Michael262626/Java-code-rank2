@@ -1,5 +1,7 @@
 package Repository;
 
-public interface EntryRepository {
+import Model.Entry;
 
+public interface EntryRepository {
+    Entry save(Entry entry);
 }

@@ -35,5 +35,4 @@ class EntryRepositoryTest {
         Entry entry1 = myEntry.findById(1);
         assertEquals(1,myEntry.findById(1).getId());
     }
-
 }

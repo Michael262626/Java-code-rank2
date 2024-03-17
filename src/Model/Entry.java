@@ -43,4 +43,7 @@ public class Entry {
         this.body = body;
         this.author = author;
     }
+    public Entry(){
+
+    }
 }

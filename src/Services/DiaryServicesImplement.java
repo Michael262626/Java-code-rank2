@@ -1,13 +1,14 @@
 package Services;
 
 import Exceptions.InvalidPasswordException;
+import Exceptions.InvalidUserNameException;
 import Exceptions.UserNameExistException;
 import Model.Diary;
+import Model.Entry;
 import Repository.DiaryRepository;
 import Repository.DiaryRepositoryImpl;
 import Repository.EntryRepository;
 import Repository.EntryRepositoryImpl;
-import com.sun.net.httpserver.Request;
 import dtos.request.EntryCreation;
 import dtos.request.RegisterRequest;
 
@@ -56,7 +57,6 @@ public class DiaryServicesImplement implements DiaryServices{
         }
 
 
-
     @Override
         public void addEntry(Diary diary, EntryCreation entryCreation) {
             Entry entry = new Entry();
@@ -72,4 +72,4 @@ public class DiaryServicesImplement implements DiaryServices{
             diary1.deleteEntry(entryNumber);
         }
     }
-}
+

@@ -24,7 +24,7 @@ class EntryRepositoryTest {
         Entry entry1 = new Entry(1, "Semicolon", "Coding", "michael" );
         Entry entry2 = new Entry(2, "Solo leveling", "Sun jin wo", "michael" );
         myEntry.save(entry1);
-        myEntry.save(entry2);
+        myEntry.save(entry2)
         myEntry.deleteEntry(entry1);
         assertEquals(1, myEntry.countEntry());
     }
@@ -58,7 +58,6 @@ class EntryRepositoryTest {
     public void testToUpDateEntry(){
         Entry entry = new Entry(1,"title","body", "michael");
         myEntry.save(entry);
-
         entry.setId(entry.getId());
         entry.setTitle("newTitle");
         entry.setBody("newBody");

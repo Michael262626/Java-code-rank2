@@ -1,6 +1,4 @@
 package eCommerceApp;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -74,5 +72,9 @@ public class Order {
     }
     private boolean isCreditCardValid(String cardNumber){
         return cardNumber.charAt(0) == '4' || cardNumber.charAt(0) == '5' || cardNumber.charAt(0) == '3' + '7' || cardNumber.charAt(0) == '3' + '4' || cardNumber.charAt(0) == '6' && cardNumber.length() == 16 || cardNumber.length() == 15;
+    }
+
+    public int getListOfItems() {
+        return items.size();
     }
 }

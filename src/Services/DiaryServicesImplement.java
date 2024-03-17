@@ -1,11 +1,14 @@
 package Services;
 
+import Exceptions.UserNameExistException;
 import Model.Diary;
 import Repository.DiaryRepository;
 import Repository.DiaryRepositoryImpl;
 import Repository.EntryRepository;
 import Repository.EntryRepositoryImpl;
 import com.sun.net.httpserver.Request;
+import dtos.request.EntryCreation;
+import dtos.request.RegisterRequest;
 
 public class DiaryServicesImplement implements DiaryServices{
 
@@ -13,7 +16,7 @@ public class DiaryServicesImplement implements DiaryServices{
         private EntryRepository entryRepositories = new EntryRepositoryImpl();
 
         @Override
-        public void register(Request request) {
+        public void register(RegisterRequest request) {
             if(isDiaryExisting(request.getUsername()))throw new UserNameExistException("User Name Existed Already");
             Diary diary = new Diary(request.getUsername(),request.getPassword());
             diaryRepositories.save(diary);
@@ -51,7 +54,9 @@ public class DiaryServicesImplement implements DiaryServices{
             return diaryRepositories.findById(username);
         }
 
-        @Override
+
+
+    @Override
         public void addEntry(Diary diary, EntryCreation entryCreation) {
             Entry entry = new Entry();
             entry.setTitle(entryCreation.getTitle());

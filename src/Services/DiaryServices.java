@@ -1,6 +1,7 @@
 package Services;
 
 import Model.Diary;
+import dtos.request.EntryCreation;
 import dtos.request.RegisterRequest;
 
 public interface DiaryServices {

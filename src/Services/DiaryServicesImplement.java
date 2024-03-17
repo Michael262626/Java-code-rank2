@@ -1,5 +1,6 @@
 package Services;
 
+import Exceptions.InvalidPasswordException;
 import Exceptions.UserNameExistException;
 import Model.Diary;
 import Repository.DiaryRepository;

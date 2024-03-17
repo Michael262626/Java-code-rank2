@@ -14,8 +14,8 @@ import dtos.request.RegisterRequest;
 
 public class DiaryServicesImplement implements DiaryServices{
 
-        private DiaryRepository diaryRepositories = new DiaryRepositoryImpl();
-        private EntryRepository entryRepositories = new EntryRepositoryImpl();
+        private final DiaryRepository diaryRepositories = new DiaryRepositoryImpl();
+        private final EntryRepository entryRepositories = new EntryRepositoryImpl();
 
         @Override
         public void register(RegisterRequest request) {

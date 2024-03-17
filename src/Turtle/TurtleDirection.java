@@ -3,7 +3,7 @@ package Turtle;
 import static Turtle.CurrentPosition.*;
 
 public class TurtleDirection {
-    private boolean penIsUp = true;
+    private final boolean penIsUp = true;
     private CurrentPosition currentPosition = EAST;
 
     public boolean penIsUp() {
@@ -18,7 +18,6 @@ public class TurtleDirection {
     }
 
     public void turnLeft() {
-
         switch (currentPosition) {
             case SOUTH -> currentPosition = EAST;
             case WEST -> currentPosition = SOUTH;

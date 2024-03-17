@@ -7,7 +7,7 @@ public enum CardType {
     DISCOVER("6"+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "+" "),
     UNKNOWN;
 
-    private String[] types;
+    private final String[] types;
     CardType(String... types){
         this.types = types;
     }

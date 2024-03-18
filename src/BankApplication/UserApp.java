@@ -18,7 +18,7 @@ public class UserApp {
 
     public static void bank() {
         String option = input("""
-                Welcome to Puzzle Bank
+                Welcome to  MiCode Bank
                 1. Register
                 2. Deposit
                 3. Withdraw

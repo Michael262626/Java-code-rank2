@@ -1,7 +1,5 @@
 package BankApplication;
 
-import eCommerceApp.Customer;
-
 import java.util.ArrayList;
 import java.util.List;
 

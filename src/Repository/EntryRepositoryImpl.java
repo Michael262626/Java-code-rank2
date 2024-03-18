@@ -49,7 +49,7 @@ public class EntryRepositoryImpl implements EntryRepository {
     }
 
     @Override
-    public Entry findByUsername(String username) {
+    public boolean findByUsername(String username) {
         for(Entry entry : entries){
             if(entry.getAuthor().equals(username)){
                 return entry;

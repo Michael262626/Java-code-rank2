@@ -23,7 +23,6 @@ class OrderTest {
     @Test
     public void testToIdentifyCardType(){
         CardType cardType = CardType.MASTER_CARD;
-        Category category = Category.ELECTRONICS;
         Customer myCustomer = new Customer("Michael Banks", "Michael2006#", "dikandumichael@gmail.com", "5, anthony", "5, anthony");
         List<Product> items = new ArrayList<>();
         Order myorder = new Order(1, myCustomer, 250_000, items, cardType);

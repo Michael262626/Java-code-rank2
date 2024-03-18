@@ -40,7 +40,7 @@ public class BankApp {
             if (account.getAccountNumber() == (accountNumber))
                 if(validatePin(pin))  return account.getBalance();
         }
-        return 0;
+        throw new InvalidAccountException("Account not created");
     }
     public boolean validatePin(String fromPin) throws InvalidPinException {
         if (fromPin == null) {

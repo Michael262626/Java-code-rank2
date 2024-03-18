@@ -34,7 +34,6 @@ public class BankApp {
         }
         throw new InvalidAccountException("Account does not exist");
     }
-
     public int checkBalance(int accountNumber, String pin) {
         for (BankAccount account : accounts) {
             if (account.getAccountNumber() == (accountNumber))

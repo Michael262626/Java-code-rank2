@@ -35,7 +35,6 @@ public class DiaryServicesImplement implements DiaryServices{
         private static void validatePassword(String password, Diary diary) {
             if(!diary.getPassword().equals(password))throw new InvalidPasswordException("Invalid Password ");
         }
-
         private  void validateUsername(Diary diary) {
             if(diary ==null)throw new InvalidUserNameException("InValid UserName Provide A Valid Username");
         }

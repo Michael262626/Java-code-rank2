@@ -75,5 +75,4 @@ class OrderTest {
         Order myorder = new Order(1, myCustomer, 250_000, items, cardType);
         assertEquals(1, myorder.getOrderId());
     }
-
 }

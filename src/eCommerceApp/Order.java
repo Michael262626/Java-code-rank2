@@ -68,7 +68,6 @@ public class Order {
         } else {
             return CardType.UNKNOWN;
         }
-
     }
     private boolean isCreditCardValid(String cardNumber){
         return cardNumber.charAt(0) == '4' || cardNumber.charAt(0) == '5' || cardNumber.charAt(0) == '3' + '7' || cardNumber.charAt(0) == '3' + '4' || cardNumber.charAt(0) == '6' && cardNumber.length() == 16 || cardNumber.length() == 15;

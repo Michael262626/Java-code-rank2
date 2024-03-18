@@ -12,8 +12,6 @@ public interface DiaryServices {
 
     Diary findDiaryById(String username);
 
+
     void addEntry(Diary diary, EntryCreation entryCreation);
-
-    void deleteAEntry(Diary diary, int entryNumber);
-
 }

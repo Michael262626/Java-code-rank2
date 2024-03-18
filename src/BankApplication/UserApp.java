@@ -31,9 +31,18 @@ public class UserApp {
 
         switch (option) {
             case "1":
-                String firstName = input("Enter your first name: ").trim();
-                String lastName = input("Enter your last name: ").trim();
+                String firstName = input("Enter your first name: ");
+                while(firstName.trim().isEmpty()){
+                    firstName = input("Enter your first name: ");
+                }
+                String lastName = input("Enter your last name: ");
+                while(lastName.trim().isEmpty()){
+                    lastName = input("Enter  your last name: ");
+                }
                 String pin = input("Enter your pin: ");
+                while(pin.trim().isEmpty()){
+                    pin = input("Enter  your last name: ");
+                }
 
                 try {
                     BankAccount myAccount = bankApp.registerCustomer(firstName, lastName, pin);

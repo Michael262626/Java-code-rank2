@@ -33,14 +33,17 @@ public class UserApp {
             case "1":
                 String firstName = input("Enter your first name: ");
                 while(firstName.trim().isEmpty()){
+                    print("Name field is required");
                     firstName = input("Enter your first name: ");
                 }
                 String lastName = input("Enter your last name: ");
                 while(lastName.trim().isEmpty()){
+                    print("Name field is required");
                     lastName = input("Enter  your last name: ");
                 }
                 String pin = input("Enter your pin: ");
                 while(pin.trim().isEmpty()){
+                    print("Pin field is required");
                     pin = input("Enter  your last name: ");
                 }
 
@@ -49,7 +52,7 @@ public class UserApp {
                     print("Your account number is " + myAccount.getAccountNumber());
                     System.out.println();
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    print(e.getMessage());
                     System.out.println();
                 } finally {
                     bank();
@@ -62,10 +65,10 @@ public class UserApp {
 
                 try {
                     bankApp.depositCash(Integer.parseInt(number), Integer.parseInt(depositAmount));
-                    System.out.println("Deposit Successful");
+                    print("Deposit Successful");
                     System.out.println();
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    print(e.getMessage());
                     System.out.println();
                 } finally {
                     bank();
@@ -79,10 +82,10 @@ public class UserApp {
 
                 try {
                     bankApp.withdrawCash(Integer.parseInt(number), Integer.parseInt(withdrawalAmount), pin);
-                    System.out.println("Withdrawal Successful");
+                    print("Withdrawal Successful");
                     System.out.println();
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    print(e.getMessage());
                     System.out.println();
                 } finally {
                     bank();
@@ -97,10 +100,10 @@ public class UserApp {
 
                 try {
                     bankApp.transferCash(Integer.parseInt(number), Integer.parseInt(receiverAccountNumber), Integer.parseInt(amount), pin);
-                    System.out.println("Withdrawal Successful");
+                    print("Withdrawal Successful");
                     System.out.println();
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    print(e.getMessage());
                     System.out.println();
                 } finally {
                     bank();
@@ -112,10 +115,10 @@ public class UserApp {
                 pin = input("Enter your pin: ");
 
                 try {
-                    System.out.println("Your balance is " + bankApp.checkBalance(Integer.parseInt(number), pin));
+                    print("Your balance is " + bankApp.checkBalance(Integer.parseInt(number), pin));
                     System.out.println();
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    print(e.getMessage());
                     System.out.println();
                 } finally {
                     bank();
@@ -128,11 +131,11 @@ public class UserApp {
 
                 try {
                     bankApp.removeAccount(Integer.parseInt(number), pin);
-                    System.out.println("Your Account has been closed");
+                    print("Your Account has been closed");
                     System.out.println();
 
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    print(e.getMessage());
                     System.out.println();
                 } finally {
                     bank();

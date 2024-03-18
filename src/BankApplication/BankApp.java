@@ -96,4 +96,5 @@ public class BankApp {
     public int getCustomerCount() {
         return customer.size();
     }
+
 }

@@ -1,6 +1,5 @@
 package Repository;
 
-import Model.Diary;
 import Model.Entry;
 
 import java.util.List;
@@ -9,7 +8,7 @@ public interface EntryRepository {
     Entry save(Entry entry);
     List<Entry> findAll();
 
-    Entry findByUsername(String username);
+    boolean findByUsername(String username);
 
     Entry findById(int id);
     long countEntry();

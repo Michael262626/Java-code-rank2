@@ -8,7 +8,7 @@ public interface EntryRepository {
     Entry save(Entry entry);
     List<Entry> findAll();
 
-    boolean findByUsername(String username);
+    Entry findByUsername(String username);
 
     Entry findById(int id);
     long countEntry();

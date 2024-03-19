@@ -30,6 +30,13 @@ class DiaryServicesImplementTest {
         diaryServicesImplement.register(request);
         assertEquals(1, diaryServicesImplement.count());
     }
-    @
+    @Test
+    public void testToFindDiaryByUsername(){
+        RegisterRequest request = new RegisterRequest();
+        request.setPassword("password");
+        request.setUsername("username");
+        diaryServicesImplement.register(request);
+        assertEquals("username", diaryServicesImplement.findDiaryByUsername("username"));
+    }
 
 }

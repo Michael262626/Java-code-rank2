@@ -26,21 +26,15 @@ public class Diary {
         this.username = username;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public Diary(String username, String password){
         this.username = username;
         this.password = password;
     }
-    public boolean isLocked() {
-        return isLocked;
+    public void setLocked(boolean condition) {
+        isLocked = condition;
     }
 
-    public void unLock() {
-        isLocked = false;
-    }
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -57,5 +51,9 @@ public class Diary {
     @Override
     public String toString() {
         return "Diary with username: " + username;
+    }
+
+    public boolean isLocked() {
+        return isLocked;
     }
 }

@@ -2,11 +2,11 @@ package Services;
 
 import Model.Diary;
 import dtos.request.EntryCreation;
-import dtos.request.RegisterRequest;
+import dtos.request.LoginRequest;
 import dtos.request.UpdateRequest;
 
 public interface DiaryServices {
-    void register(RegisterRequest request);
+    void register(LoginRequest request);
     void login(String username, String password);
     long count();
     Diary findDiaryByUsername(String username);

@@ -8,7 +8,11 @@ public class RegisterRequest {
             this.password = password;
         }
 
-        public String getUsername() {
+    public RegisterRequest() {
+
+    }
+
+    public String getUsername() {
             return username;
         }
 

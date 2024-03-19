@@ -55,6 +55,12 @@ public class DiaryServicesImplement implements DiaryServices{
             return diaryRepositories.findById(username);
         }
 
+    @Override
+    public void logout(String password) {
+        Diary diary  = findDiaryById(password);
+        validatePassword(password, diary);
+        diary.isLocked();
+    }
 
     @Override
         public void addEntry(Diary diary, EntryCreation entryCreation) {

@@ -7,11 +7,9 @@ import dtos.request.RegisterRequest;
 public interface DiaryServices {
     void register(RegisterRequest request);
     void login(String username, String password);
-
     long count();
-
     Diary findDiaryById(String username);
-
+   void logout(String password);
 
     void addEntry(Diary diary, EntryCreation entryCreation);
 

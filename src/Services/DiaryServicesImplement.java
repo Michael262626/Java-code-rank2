@@ -10,6 +10,7 @@ import Repository.DiaryRepositoryImpl;
 import Repository.EntryRepository;
 import Repository.EntryRepositoryImpl;
 import dtos.request.EntryCreation;
+import dtos.request.LogOutRequest;
 import dtos.request.RegisterRequest;
 import dtos.request.UpdateRequest;
 
@@ -17,6 +18,7 @@ public class DiaryServicesImplement implements DiaryServices{
 
         private final DiaryRepository diaryRepositories = new DiaryRepositoryImpl();
         private final EntryRepository entryRepositories = new EntryRepositoryImpl();
+        private LogOutRequest logOutRequest = new LogOutRequest();
         private EntryServicesImplement entryServicesImplement = new EntryServicesImplement();
 
         @Override
@@ -28,7 +30,7 @@ public class DiaryServicesImplement implements DiaryServices{
 
         @Override
         public void login(String username, String password) {
-            Diary diary  = findDiaryById(username);
+            Diary diary  = findDiaryByUsername(username);
             validateUsername(diary);
             validatePassword(password, diary);
             diary.unLock();
@@ -53,13 +55,14 @@ public class DiaryServicesImplement implements DiaryServices{
         }
 
         @Override
-        public Diary findDiaryById(String username) {
+        public Diary findDiaryByUsername(String username) {
             return diaryRepositories.findById(username);
         }
 
     @Override
     public void logout(String password) {
-        Diary diary  = findDiaryById(password);
+        String username = logOutRequest.getUsername();
+        Diary diary  = findDiaryByUsername(username);
         validatePassword(password, diary);
         diary.isLocked();
     }

@@ -18,8 +18,8 @@ public class DiaryServicesImplement implements DiaryServices{
 
         private final DiaryRepository diaryRepositories = new DiaryRepositoryImpl();
         private final EntryRepository entryRepositories = new EntryRepositoryImpl();
-        private LogOutRequest logOutRequest = new LogOutRequest();
-        private EntryServicesImplement entryServicesImplement = new EntryServicesImplement();
+        private final LogOutRequest logOutRequest = new LogOutRequest();
+        private final EntryServicesImplement entryServicesImplement = new EntryServicesImplement();
 
         @Override
         public void register(LoginRequest request) {
@@ -33,7 +33,7 @@ public class DiaryServicesImplement implements DiaryServices{
             Diary diary  = findDiaryByUsername(username);
             validateUsername(diary);
             validatePassword(password, diary);
-            diary.unLock();
+            diary.setLocked(false);
         }
 
         private static void validatePassword(String password, Diary diary) {
@@ -64,7 +64,7 @@ public class DiaryServicesImplement implements DiaryServices{
         String username = logOutRequest.getUsername();
         Diary diary  = findDiaryByUsername(username);
         validatePassword(password, diary);
-        diary.isLocked();
+        diary.setLocked(true);
     }
 
 

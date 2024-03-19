@@ -67,8 +67,6 @@ public class DiaryServicesImplement implements DiaryServices{
         diary.setLocked(true);
     }
 
-
-
     @Override
     public void updateEntry(UpdateRequest updateEntryRequest) {
         Entry entry = new Entry();
@@ -84,8 +82,8 @@ public class DiaryServicesImplement implements DiaryServices{
             Entry entry = new Entry();
             entry.setTitle(entryCreation.getTitle());
             entry.setBody(entryCreation.getBody());
-            Diary diary1 = diaryRepositories.findById(diary.getUsername());
-            diary.createEntry(entryRepositories.save(entry));
+            diaryRepositories.findById(diary.getUsername());
+            entryRepositories.save(entry);
         }
 
         @Override

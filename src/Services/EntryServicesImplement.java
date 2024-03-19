@@ -1,5 +1,6 @@
 package Services;
 
+import Model.Diary;
 import Model.Entry;
 import Repository.EntryRepositoryImpl;
 
@@ -25,17 +26,6 @@ public class EntryServicesImplement implements EntryServices{
     public long numberOfEntries() {
         return entryRepository.findAll().size();
     }
-
-    @Override
-    public void updateEntry() {
-
-    }
-
-    @Override
-    public void updateEntry(String title) {
-
-    }
-
 
     @Override
     public void findAll() {

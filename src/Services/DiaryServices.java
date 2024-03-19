@@ -9,8 +9,9 @@ public interface DiaryServices {
     void register(RegisterRequest request);
     void login(String username, String password);
     long count();
-    Diary findDiaryById(String username);
-   void logout(String password);
+    Diary findDiaryByUsername(String username);
+
+    void logout(String password);
 
     void updateEntry(UpdateRequest updateEntryRequest);
 

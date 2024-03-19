@@ -11,7 +11,7 @@ import Repository.EntryRepository;
 import Repository.EntryRepositoryImpl;
 import dtos.request.EntryCreation;
 import dtos.request.LogOutRequest;
-import dtos.request.RegisterRequest;
+import dtos.request.LoginRequest;
 import dtos.request.UpdateRequest;
 
 public class DiaryServicesImplement implements DiaryServices{
@@ -22,7 +22,7 @@ public class DiaryServicesImplement implements DiaryServices{
         private EntryServicesImplement entryServicesImplement = new EntryServicesImplement();
 
         @Override
-        public void register(RegisterRequest request) {
+        public void register(LoginRequest request) {
             if(isDiaryExisting(request.getUsername()))throw new UserNameExistException("User Name Existed Already");
             Diary diary = new Diary(request.getUsername(),request.getPassword());
             diaryRepositories.save(diary);

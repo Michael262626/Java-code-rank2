@@ -8,7 +8,11 @@ public class EntryCreation {
             this.body = body;
         }
 
-        public String getTitle() {
+    public EntryCreation() {
+
+    }
+
+    public String getTitle() {
             return title;
         }
 

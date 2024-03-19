@@ -1,14 +1,14 @@
 package dtos.request;
 
-public class RegisterRequest {
+public class LoginRequest {
         private String username;
         private String password;
-        public RegisterRequest(String username,String password){
+        public LoginRequest(String username, String password){
             this.username = username;
             this.password = password;
         }
 
-    public RegisterRequest() {
+    public LoginRequest() {
 
     }
 

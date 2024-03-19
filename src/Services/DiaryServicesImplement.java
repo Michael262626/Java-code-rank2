@@ -89,9 +89,8 @@ public class DiaryServicesImplement implements DiaryServices{
         }
 
         @Override
-        public void deleteAEntry(Diary diary, int entryNumber) {
-            Diary diary1 = diaryRepositories.findById(diary.getUsername());
-            diary1.deleteEntry(entryNumber);
+        public void deleteAEntry(String title) {
+            entryRepositories.findAll().removeIf(entry -> entry.getTitle().equals(title));
         }
     }
 

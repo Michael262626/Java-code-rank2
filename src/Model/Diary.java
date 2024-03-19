@@ -48,11 +48,6 @@ public class Diary {
         Diary diary = (Diary) object;
         return Objects.equals(username, diary.username);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(username);
-    }
     public void deleteEntry(int entryNumber) {
         entries.removeIf(entryId-> entryId.getId() == entryNumber);
     }

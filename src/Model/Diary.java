@@ -43,7 +43,7 @@ public class Diary {
         return Objects.equals(username, diary.username);
     }
     public void deleteEntry(int entryNumber) {
-        entries.removeIf(entryId-> entryId.getId() == entryNumber);
+        entries.removeIf(entry-> entry.getId() == entryNumber);
     }
     public void createEntry(Entry entry) {
         entries.add(entry);

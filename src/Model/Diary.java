@@ -8,6 +8,11 @@ public class Diary {
     private String password;
     private boolean isLocked = true;
     private List<Entry> entries = new ArrayList<>();
+
+    public Diary() {
+
+    }
+
     public String getPassword() {
         return password;
     }

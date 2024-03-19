@@ -23,6 +23,11 @@ public class EntryServicesImplement implements EntryServices{
     }
 
     @Override
+    public void save(Entry entry) {
+        entryRepository.save(entry);
+    }
+
+    @Override
     public long numberOfEntries() {
         return entryRepository.findAll().size();
     }

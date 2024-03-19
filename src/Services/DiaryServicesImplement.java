@@ -11,11 +11,13 @@ import Repository.EntryRepository;
 import Repository.EntryRepositoryImpl;
 import dtos.request.EntryCreation;
 import dtos.request.RegisterRequest;
+import dtos.request.UpdateRequest;
 
 public class DiaryServicesImplement implements DiaryServices{
 
         private final DiaryRepository diaryRepositories = new DiaryRepositoryImpl();
         private final EntryRepository entryRepositories = new EntryRepositoryImpl();
+        private EntryServicesImplement entryServicesImplement = new EntryServicesImplement();
 
         @Override
         public void register(RegisterRequest request) {
@@ -60,6 +62,18 @@ public class DiaryServicesImplement implements DiaryServices{
         Diary diary  = findDiaryById(password);
         validatePassword(password, diary);
         diary.isLocked();
+    }
+
+
+
+    @Override
+    public void updateEntry(UpdateRequest updateEntryRequest) {
+        Entry entry = new Entry();
+        entry.setId(updateEntryRequest.getId());
+        entry.setAuthor(updateEntryRequest.getName());
+        entry.setTitle(updateEntryRequest.getTitle());
+        entry.setBody(updateEntryRequest.getBody());
+        entryServicesImplement.save(entry);
     }
 
     @Override

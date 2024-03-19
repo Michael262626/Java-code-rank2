@@ -1,7 +1,7 @@
 package Services;
 
 import Model.Diary;
-import dtos.request.RegisterRequest;
+import dtos.request.LoginRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ class DiaryServicesImplementTest {
     }
     @Test
     public void testToLogin(){
-        RegisterRequest request = new RegisterRequest();
+        LoginRequest request = new LoginRequest();
         request.setUsername("username");
         request.setPassword("password");
         Diary diary = new Diary();
@@ -24,7 +24,7 @@ class DiaryServicesImplementTest {
     }
     @Test
     public void testToRegister(){
-        RegisterRequest request = new RegisterRequest();
+        LoginRequest request = new LoginRequest();
         request.setPassword("password");
         request.setUsername("username");
         diaryServicesImplement.register(request);
@@ -32,11 +32,13 @@ class DiaryServicesImplementTest {
     }
     @Test
     public void testToFindDiaryByUsername(){
-        RegisterRequest request = new RegisterRequest();
+        LoginRequest request = new LoginRequest();
         request.setPassword("password");
         request.setUsername("username");
         diaryServicesImplement.register(request);
-        assertEquals("username", diaryServicesImplement.findDiaryByUsername("username"));
+        Diary diary = new Diary();
+        diary.setUsername(request.getUsername());
+        assertEquals(diary, diaryServicesImplement.findDiaryByUsername("username"));
     }
 
 }

@@ -28,7 +28,8 @@ class DiaryServicesImplementTest {
         request.setPassword("password");
         request.setUsername("username");
         diaryServicesImplement.register(request);
-
+        assertEquals(1, diaryServicesImplement.count());
     }
+    @
 
 }

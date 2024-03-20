@@ -14,7 +14,7 @@ public class Task {
                 if(arrays[count]>=occurNum){
                     occurNum = count;
                 }
-        }
+           }
      }
         return new int[]{counterNum, occurNum};
     }

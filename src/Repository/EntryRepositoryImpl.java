@@ -41,8 +41,6 @@ public class EntryRepositoryImpl implements EntryRepository {
         }
         return true;
     }
-
-
     @Override
     public List<Entry> findAll() {
         return entries;

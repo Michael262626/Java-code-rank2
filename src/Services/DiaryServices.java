@@ -2,6 +2,7 @@ package Services;
 
 import Model.Diary;
 import Model.Entry;
+import dtos.request.DeleteRequest;
 import dtos.request.EntryCreation;
 import dtos.request.LoginRequest;
 import dtos.request.UpdateRequest;
@@ -19,4 +20,7 @@ public interface DiaryServices {
     void addEntry(Diary diary, EntryCreation entryCreation);
 
     void deleteAnEntry(String title);
+
+    void deleteDiary(DeleteRequest request);
+    Entry findEntry(String title);
 }

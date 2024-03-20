@@ -2,9 +2,9 @@ package Controller;
 
 import Exceptions.*;
 import Services.DiaryServicesImplement;
-import Services.EntryServicesImplement;
 import dtos.request.DeleteRequest;
 import dtos.request.LoginRequest;
+import dtos.request.UpdateRequest;
 
 public class DiaryController {
     private final DiaryServicesImplement diaryServicesImplement = new DiaryServicesImplement();
@@ -60,8 +60,12 @@ public class DiaryController {
         try{
             diaryServicesImplement.deleteDiary(request);
             return "Diary is removed";
-        }catch (DiaryNotFoundException e){
+        }catch (InvalidUserNameException | InvalidPasswordException e){
             return (e.getMessage());
         }
+    }
+    public String updateEntry(UpdateRequest request){
+            diaryServicesImplement.updateEntry(request);
+            return "Entry Updated";
     }
 }

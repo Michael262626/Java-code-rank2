@@ -5,6 +5,11 @@ public class LoginRequest {
         private String password;
         private boolean isLocked = true;
 
+    public LoginRequest(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public boolean isLocked() {
         return isLocked;
     }

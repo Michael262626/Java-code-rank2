@@ -30,10 +30,7 @@ public class EntryServicesImplement implements EntryServices{
         entryRepository.save(entry);
     }
 
-    @Override
-    public long numberOfEntries() {
-        return entryRepository.findAll().size();
-    }
+
     @Override
     public List<Entry> findAll(Entry entry) {
         return entries;

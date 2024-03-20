@@ -1,9 +1,6 @@
 package Services;
 
-import Exceptions.DiaryNotFoundException;
-import Exceptions.InvalidPasswordException;
-import Exceptions.InvalidUserNameException;
-import Exceptions.UserNameExistException;
+import Exceptions.*;
 import Model.Diary;
 import Model.Entry;
 import Repository.DiaryRepository;
@@ -14,6 +11,9 @@ import dtos.request.EntryCreation;
 import dtos.request.LogOutRequest;
 import dtos.request.LoginRequest;
 import dtos.request.UpdateRequest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DiaryServicesImplement implements DiaryServices{
 
@@ -99,7 +99,7 @@ public class DiaryServicesImplement implements DiaryServices{
         }
 
         @Override
-        public void deleteAEntry(String title) {
+        public void deleteAnEntry(String title) {
             entryRepositories.findAll().removeIf(entry -> entry.getTitle().equals(title));
         }
     }

@@ -77,7 +77,16 @@ public class DiaryServicesImplement implements DiaryServices{
 
     @Override
     public void updateEntry(UpdateRequest updateEntryRequest) {
-        Entry entry = new Entry();
+        String title = updateEntryRequest.getTitle();
+        String body = updateEntryRequest.getBody();
+        Entry entry = findEntry(title);
+
+        if (entry == null) {
+            throw new EntryNotFoundException("Entry with title '" + title + "' not found");
+        }
+        if (entry.getBody().equals(body)) {
+            throw new EntryUpdateException("Body was not changed '" + title + "'");
+        }
         entry.setId(updateEntryRequest.getId());
         entry.setAuthor(updateEntryRequest.getName());
         entry.setTitle(updateEntryRequest.getTitle());
@@ -119,11 +128,12 @@ public class DiaryServicesImplement implements DiaryServices{
     }
 
     public Entry findEntry(String title) {
-            for(Entry entry: entryRepositories.findAll()){
-                if (entry.getTitle().equals(title)) return entry;
-                throw new EntryNotFoundException("Entry was not found");
+        for (Entry entry : entryRepositories.findAll()) {
+            if (entry.getTitle().equals(title)) {
+                return entry;
             }
-        return null;
+        }
+        throw new EntryNotFoundException("Entry with title '" + title + "' was not found");
     }
 
 

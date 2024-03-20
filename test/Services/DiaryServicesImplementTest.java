@@ -160,8 +160,9 @@ class DiaryServicesImplementTest {
         Diary diary = new Diary();
         diary.setUsername(request.getUsername());
         diaryServicesImplement.addEntry(diary, entryCreation);
+
         UpdateRequest updateRequest = new UpdateRequest();
-        updateRequest.setTitle("newTitle");
+        updateRequest.setTitle("title");
         updateRequest.setBody("newBody");
         diaryServicesImplement.updateEntry(updateRequest);
         assertEquals(1, diaryServicesImplement.count());

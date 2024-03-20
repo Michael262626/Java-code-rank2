@@ -10,7 +10,7 @@ public interface EntryServices {
     void deleteEntry(Entry entry);
     void findById(String title);
     void save(Entry entry);
-    long numberOfEntries();
+
 
     List<Entry> findAll(Entry entry);
 

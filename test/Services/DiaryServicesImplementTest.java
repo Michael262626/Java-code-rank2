@@ -1,5 +1,6 @@
 package Services;
 
+import Exceptions.EntryNotFoundException;
 import Exceptions.InvalidPasswordException;
 import Exceptions.InvalidTitleException;
 import Exceptions.InvalidUserNameException;
@@ -126,7 +127,7 @@ class DiaryServicesImplementTest {
         diary.setUsername(request.getUsername());
         diaryServicesImplement.addEntry(diary, entryCreation);
         assertEquals(1, diaryServicesImplement.count());
-        diaryServicesImplement.deleteAEntry(entryCreation.getTitle());
+        diaryServicesImplement.deleteAnEntry(entryCreation.getTitle());
 
         assertEquals(0, diaryServicesImplement.numberOfEntries());
     }
@@ -147,7 +148,7 @@ class DiaryServicesImplementTest {
         diary.setUsername(request.getUsername());
         diaryServicesImplement.addEntry(diary, entryCreation);
         assertEquals(1, diaryServicesImplement.count());
-        assertThrows(InvalidTitleException.class, ()-> diaryServicesImplement.deleteAEntry("wrongTitle"));
+        assertThrows(EntryNotFoundException.class, ()-> diaryServicesImplement.deleteAnEntry("wrongTitle"));
     }
 }
 

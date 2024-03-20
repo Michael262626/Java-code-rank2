@@ -64,8 +64,12 @@ public class DiaryController {
             return (e.getMessage());
         }
     }
-    public String updateEntry(UpdateRequest request){
+    public String updateEntry(UpdateRequest request) {
+        try {
             diaryServicesImplement.updateEntry(request);
             return "Entry Updated";
+        }catch (EntryUpdateException | EntryNotFoundException e){
+            return (e.getMessage());
+        }
     }
 }

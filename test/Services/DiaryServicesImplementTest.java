@@ -2,12 +2,12 @@ package Services;
 
 import Exceptions.EntryNotFoundException;
 import Exceptions.InvalidPasswordException;
-import Exceptions.InvalidTitleException;
 import Exceptions.InvalidUserNameException;
 import Model.Diary;
 import dtos.request.EntryCreation;
 import dtos.request.LogOutRequest;
 import dtos.request.LoginRequest;
+import dtos.request.UpdateRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -149,6 +149,24 @@ class DiaryServicesImplementTest {
         diaryServicesImplement.addEntry(diary, entryCreation);
         assertEquals(1, diaryServicesImplement.count());
         assertThrows(EntryNotFoundException.class, ()-> diaryServicesImplement.deleteAnEntry("wrongTitle"));
+    }
+    @Test
+    public void testToUpdateEntry(){
+        LoginRequest request = new LoginRequest();
+        request.setPassword("password");
+        request.setUsername("username");
+        diaryServicesImplement.register(request);
+        EntryCreation entryCreation = new EntryCreation();
+        entryCreation.setTitle("title");
+        entryCreation.setBody("body");
+        Diary diary = new Diary();
+        diary.setUsername(request.getUsername());
+        diaryServicesImplement.addEntry(diary, entryCreation);
+        UpdateRequest updateRequest = new UpdateRequest();
+        updateRequest.setTitle("newTitle");
+        updateRequest.setBody("newBody");
+        diaryServicesImplement.updateEntry(updateRequest);
+        assertEquals(1, diaryServicesImplement.count());
     }
 }
 

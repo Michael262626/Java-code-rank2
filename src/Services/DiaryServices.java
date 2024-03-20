@@ -11,7 +11,7 @@ public interface DiaryServices {
     void login(String username, String password);
     long count();
     Diary findDiaryByUsername(String username);
-
+    long numberOfEntries();
     void logout(String password);
 
     void updateEntry(UpdateRequest updateEntryRequest);

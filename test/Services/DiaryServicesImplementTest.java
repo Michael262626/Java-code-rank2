@@ -1,6 +1,7 @@
 package Services;
 
 import Exceptions.InvalidPasswordException;
+import Exceptions.InvalidTitleException;
 import Exceptions.InvalidUserNameException;
 import Model.Diary;
 import dtos.request.EntryCreation;
@@ -129,5 +130,24 @@ class DiaryServicesImplementTest {
 
         assertEquals(0, diaryServicesImplement.numberOfEntries());
     }
+    @Test
+    public void testToDeleteEntryWithWrongTitle(){
+        LoginRequest request = new LoginRequest();
+        request.setPassword("password");
+        request.setUsername("username");
+
+        DiaryServicesImplement diaryServicesImplement = new DiaryServicesImplement();
+        diaryServicesImplement.register(request);
+
+        EntryCreation entryCreation = new EntryCreation();
+        entryCreation.setTitle("title");
+        entryCreation.setBody("body");
+
+        Diary diary = new Diary();
+        diary.setUsername(request.getUsername());
+        diaryServicesImplement.addEntry(diary, entryCreation);
+        assertEquals(1, diaryServicesImplement.count());
+        assertThrows(InvalidTitleException.class, ()-> diaryServicesImplement.deleteAEntry("wrongTitle"));
     }
+}
 

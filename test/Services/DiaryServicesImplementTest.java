@@ -1,14 +1,11 @@
 package Services;
 
-import Exceptions.DiaryNotFoundException;
+import Exceptions.InvalidPasswordException;
 import Exceptions.InvalidUserNameException;
 import Model.Diary;
-import Model.Entry;
-import Repository.DiaryRepositoryImpl;
 import dtos.request.EntryCreation;
 import dtos.request.LogOutRequest;
 import dtos.request.LoginRequest;
-import dtos.request.UpdateRequest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,6 +35,14 @@ class DiaryServicesImplementTest {
         loginRequest.setUsername("Michael");
         diaryServicesImplement.register(loginRequest);
         assertThrows(InvalidUserNameException.class, ()->  diaryServicesImplement.login("username", "password"));
+    }
+    @Test
+    public  void testLoginWithIncorrectPassword(){
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setPassword("password");
+        loginRequest.setUsername("Michael");
+        diaryServicesImplement.register(loginRequest);
+        assertThrows(InvalidPasswordException.class, ()->  diaryServicesImplement.login("Michael", "wrongPassword"));
     }
 
     @Test
@@ -78,6 +83,16 @@ class DiaryServicesImplementTest {
         logOutRequest.setUsername("Michael");
         diaryServicesImplement.logout("Michael");
         assertTrue(diaryServicesImplement.findDiaryByUsername(logOutRequest.getUsername()).isLocked());
+    }
+    @Test
+    public void testToLogOutWithIncorrectPassword(){
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setPassword("password");
+        loginRequest.setUsername("Michael");
+        diaryServicesImplement.register(loginRequest);
+        LogOutRequest logOutRequest = new LogOutRequest();
+        logOutRequest.setUsername("Michael");
+        assertThrows(InvalidUserNameException.class, ()-> diaryServicesImplement.logout("wrongName"));
     }
     @Test
     public void testToAddEntry(){

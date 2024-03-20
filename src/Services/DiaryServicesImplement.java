@@ -7,13 +7,9 @@ import Repository.DiaryRepository;
 import Repository.DiaryRepositoryImpl;
 import Repository.EntryRepository;
 import Repository.EntryRepositoryImpl;
-import dtos.request.EntryCreation;
-import dtos.request.LogOutRequest;
-import dtos.request.LoginRequest;
-import dtos.request.UpdateRequest;
+import dtos.request.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
 
 public class DiaryServicesImplement implements DiaryServices{
 
@@ -104,7 +100,25 @@ public class DiaryServicesImplement implements DiaryServices{
             entryRepositories.deleteEntry(entry);
         }
 
-    private Entry findEntry(String title) {
+    @Override
+    public void deleteDiary(DeleteRequest request) {
+        String username = request.getUsername();
+        String password = request.getPassword();
+
+        Diary diary = diaryRepositories.findById(username);
+        if (diary == null) {
+            throw new DiaryNotFoundException("Diary not found for username: " + username);
+        }
+        if (!diary.getPassword().equals(password)) {
+            throw new InvalidPasswordException("Invalid password for username: " + username);
+        }
+        boolean deleted = diaryRepositories.deleteDiary(diary);
+        if (!deleted) {
+            throw new DiaryNotFoundException("Diary not found for username: " + username);
+        }
+    }
+
+    public Entry findEntry(String title) {
             for(Entry entry: entryRepositories.findAll()){
                 if (entry.getTitle().equals(title)) return entry;
                 throw new EntryNotFoundException("Entry was not found");

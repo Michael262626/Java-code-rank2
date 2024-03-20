@@ -10,5 +10,5 @@ public interface DiaryRepository {
     Diary findById(String username);
     long count();
     void deleteUsername(String username);
-    void deleteDiary(Diary diary);
+    boolean deleteDiary(Diary diary);
 }

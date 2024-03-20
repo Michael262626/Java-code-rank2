@@ -22,7 +22,6 @@ public class EntryRepositoryImpl implements EntryRepository {
 
             }
         }
-
         return entry;
     }
 

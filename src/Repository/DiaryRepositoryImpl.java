@@ -1,5 +1,6 @@
 package Repository;
 
+import Exceptions.InvalidUserNameException;
 import Model.Diary;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class DiaryRepositoryImpl implements DiaryRepository{
             if(diary.getUsername().equals(username)) return diary;
             break;
         }
-        return null;
+        throw new InvalidUserNameException("user not found");
     }
     @Override
     public long count() {

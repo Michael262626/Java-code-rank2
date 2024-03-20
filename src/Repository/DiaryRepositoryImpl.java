@@ -4,6 +4,7 @@ import Exceptions.InvalidUserNameException;
 import Model.Diary;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class DiaryRepositoryImpl implements DiaryRepository{
@@ -41,10 +42,15 @@ public class DiaryRepositoryImpl implements DiaryRepository{
     }
 
     @Override
-    public void deleteDiary(Diary diary) {
-        for (Diary diary1 : diaries) {
-            if (diary.equals(diary1)) diaries.remove(diary);
-            break;
+    public boolean deleteDiary(Diary diary) {
+        Iterator<Diary> iterator = diaries.iterator();
+        while (iterator.hasNext()) {
+            Diary currentDiary = iterator.next();
+            if (diary.equals(currentDiary)) {
+                iterator.remove();
+                return true;
+            }
         }
+        return false;
     }
 }

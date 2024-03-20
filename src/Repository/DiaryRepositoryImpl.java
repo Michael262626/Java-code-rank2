@@ -22,6 +22,7 @@ public class DiaryRepositoryImpl implements DiaryRepository{
     public Diary findById(String username) {
         for(Diary diary : diaries){
             if(diary.getUsername().equals(username)) return diary;
+            break;
         }
         return null;
     }

@@ -1,5 +1,6 @@
 package Services;
 
+import Exceptions.DiaryNotFoundException;
 import Exceptions.InvalidPasswordException;
 import Exceptions.InvalidUserNameException;
 import Exceptions.UserNameExistException;
@@ -36,9 +37,15 @@ public class DiaryServicesImplement implements DiaryServices{
             diary.setLocked(false);
         }
 
-        private static void validatePassword(String password, Diary diary) {
-            if(!diary.getPassword().equals(password))throw new InvalidPasswordException("Invalid Password ");
-        }
+     private static void validatePassword(String password, Diary diary) {
+            if (diary == null) {
+                throw new NullPointerException("Diary object is null");
+            }
+
+            if (!diary.getPassword().equals(password)) {
+                throw new InvalidPasswordException("Invalid Password");
+            }
+     }
         private  void validateUsername(Diary diary) {
             if(diary ==null)throw new InvalidUserNameException("InValid UserName Provide A Valid Username");
         }
@@ -53,17 +60,22 @@ public class DiaryServicesImplement implements DiaryServices{
         public long count() {
             return diaryRepositories.count();
         }
-
+        @Override
+        public long numberOfEntries() {
+            return entryRepositories.findAll().size();
+    }
         @Override
         public Diary findDiaryByUsername(String username) {
             return diaryRepositories.findById(username);
         }
 
     @Override
-    public void logout(String password) {
-        String username = logOutRequest.getUsername();
-        Diary diary  = findDiaryByUsername(username);
-        validatePassword(password, diary);
+    public void logout(String username) {
+        Diary diary = findDiaryByUsername(username);
+        if (diary == null) {
+            throw new DiaryNotFoundException("Diary not found for username: " + username);
+        }
+        validateUsername(diary);
         diary.setLocked(true);
     }
 

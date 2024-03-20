@@ -100,7 +100,18 @@ public class DiaryServicesImplement implements DiaryServices{
 
         @Override
         public void deleteAnEntry(String title) {
-            entryRepositories.findAll().removeIf(entry -> entry.getTitle().equals(title));
+            Entry entry = findEntry(title);
+            entryRepositories.deleteEntry(entry);
         }
+
+    private Entry findEntry(String title) {
+            for(Entry entry: entryRepositories.findAll()){
+                if (entry.getTitle().equals(title)) return entry;
+                throw new EntryNotFoundException("Entry was not found");
+            }
+        return null;
     }
+
+
+}
 

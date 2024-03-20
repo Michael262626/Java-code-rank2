@@ -1,13 +1,11 @@
 package Services;
 
+import Exceptions.DiaryNotFoundException;
 import Exceptions.EntryNotFoundException;
 import Exceptions.InvalidPasswordException;
 import Exceptions.InvalidUserNameException;
 import Model.Diary;
-import dtos.request.EntryCreation;
-import dtos.request.LogOutRequest;
-import dtos.request.LoginRequest;
-import dtos.request.UpdateRequest;
+import dtos.request.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -167,6 +165,43 @@ class DiaryServicesImplementTest {
         updateRequest.setBody("newBody");
         diaryServicesImplement.updateEntry(updateRequest);
         assertEquals(1, diaryServicesImplement.count());
+    }
+    @Test
+    public void testToDeleteDiary(){
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setPassword("password");
+        loginRequest.setUsername("Michael");
+        diaryServicesImplement.register(loginRequest);
+
+        DeleteRequest deleteRequest = new DeleteRequest();
+        deleteRequest.setPassword(loginRequest.getPassword());
+        deleteRequest.setUsername(loginRequest.getUsername());
+        diaryServicesImplement.deleteDiary(deleteRequest);
+        assertEquals(0, diaryServicesImplement.count());
+    }
+    @Test
+    public void testToDeleteDiaryWithIncorrectUsername(){
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setPassword("password");
+        loginRequest.setUsername("Michael");
+        diaryServicesImplement.register(loginRequest);
+
+        DeleteRequest deleteRequest = new DeleteRequest();
+        deleteRequest.setPassword(loginRequest.getPassword());
+        deleteRequest.setUsername("wrongUsername");
+        assertThrows(InvalidUserNameException.class, ()-> diaryServicesImplement.deleteDiary(deleteRequest));
+    }
+    @Test
+    public void testToDeleteDiaryWithIncorrectPassword(){
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setPassword("password");
+        loginRequest.setUsername("Michael");
+        diaryServicesImplement.register(loginRequest);
+
+        DeleteRequest deleteRequest = new DeleteRequest();
+        deleteRequest.setPassword("wrongPassword");
+        deleteRequest.setUsername(loginRequest.getUsername());
+        assertThrows(InvalidPasswordException.class, ()-> diaryServicesImplement.deleteDiary(deleteRequest));
     }
 }
 

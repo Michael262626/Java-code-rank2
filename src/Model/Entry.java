@@ -1,9 +1,13 @@
 package Model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Entry {
     private int id;
     private String title;
     private String body;
+    private final LocalDateTime localDateTime = LocalDateTime.now();
 
     public String getAuthor() {
         return author;
@@ -45,5 +49,14 @@ public class Entry {
     }
     public Entry(){
 
+    }
+    @Override
+    public String toString() {
+        return "Entry{" +
+                "id =" + id +
+                ", title ='" + title + '\'' +
+                ", body ='" + body + '\'' +
+                ", localDateTime =" + localDateTime +
+                '}';
     }
 }

@@ -1,9 +1,12 @@
 package Services;
 
+import Exceptions.DiaryNotFoundException;
+import Exceptions.InvalidUserNameException;
 import Model.Diary;
 import Model.Entry;
 import Repository.DiaryRepositoryImpl;
 import dtos.request.EntryCreation;
+import dtos.request.LogOutRequest;
 import dtos.request.LoginRequest;
 import dtos.request.UpdateRequest;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,26 +16,36 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DiaryServicesImplementTest {
     private DiaryServicesImplement diaryServicesImplement;
-    private UpdateRequest updateRequest;
+
+
     @BeforeEach
     public void initializer(){
         diaryServicesImplement = new DiaryServicesImplement();
     }
     @Test
     public void testToLogin(){
-        LoginRequest request = new LoginRequest();
-        request.setUsername("username");
-        request.setPassword("password");
-        Diary diary = new Diary();
-        diary.setLocked(false);
-        assertFalse(diary.isLocked());
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setPassword("password");
+        loginRequest.setUsername("Michael");
+        diaryServicesImplement.register(loginRequest);
+        diaryServicesImplement.login("Michael", "password");
+        assertFalse(diaryServicesImplement.findDiaryByUsername(loginRequest.getUsername()).isLocked());
     }
     @Test
+    public void testToLoginWithWrongPasswordOrUsernameRegistering(){
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setPassword("password");
+        loginRequest.setUsername("Michael");
+        diaryServicesImplement.register(loginRequest);
+        assertThrows(InvalidUserNameException.class, ()->  diaryServicesImplement.login("username", "password"));
+    }
+
+    @Test
     public void testToRegister(){
-        LoginRequest request = new LoginRequest();
-        request.setPassword("password");
-        request.setUsername("username");
-        diaryServicesImplement.register(request);
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setPassword("password");
+        loginRequest.setUsername("Michael");
+        diaryServicesImplement.register(loginRequest);
         assertEquals(1, diaryServicesImplement.count());
     }
     @Test
@@ -46,13 +59,25 @@ class DiaryServicesImplementTest {
         assertEquals(diary, diaryServicesImplement.findDiaryByUsername("username"));
     }
     @Test
-    public void testToLogout(){
+    public void testToFindDiaryWithIncorrectUsername(){
         LoginRequest request = new LoginRequest();
-        request.setUsername("username");
         request.setPassword("password");
+        request.setUsername("username");
+        diaryServicesImplement.register(request);
         Diary diary = new Diary();
-        diary.setLocked(true);
-        assertTrue(diary.isLocked());
+        diary.setUsername(request.getUsername());
+        assertThrows(InvalidUserNameException.class, ()-> diaryServicesImplement.findDiaryByUsername("wrongName"));
+    }
+    @Test
+    public void testToLogout(){
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setPassword("password");
+        loginRequest.setUsername("Michael");
+        diaryServicesImplement.register(loginRequest);
+        LogOutRequest logOutRequest = new LogOutRequest();
+        logOutRequest.setUsername("Michael");
+        diaryServicesImplement.logout("Michael");
+        assertTrue(diaryServicesImplement.findDiaryByUsername(logOutRequest.getUsername()).isLocked());
     }
     @Test
     public void testToAddEntry(){
@@ -87,7 +112,7 @@ class DiaryServicesImplementTest {
         assertEquals(1, diaryServicesImplement.count());
         diaryServicesImplement.deleteAEntry(entryCreation.getTitle());
 
-        assertEquals(0, diaryServicesImplement.count());
+        assertEquals(0, diaryServicesImplement.numberOfEntries());
     }
     }
 

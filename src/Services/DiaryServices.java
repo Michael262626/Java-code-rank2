@@ -18,5 +18,5 @@ public interface DiaryServices {
 
     void addEntry(Diary diary, EntryCreation entryCreation);
 
-    void deleteAEntry(String title);
+    void deleteAnEntry(String title);
 }

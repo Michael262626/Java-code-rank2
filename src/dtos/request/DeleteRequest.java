@@ -3,6 +3,14 @@ package dtos.request;
 public class DeleteRequest {
     private String username;
 
+    public DeleteRequest(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+    public DeleteRequest(){
+
+    }
+
     public String getUsername() {
         return username;
     }

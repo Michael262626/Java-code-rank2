@@ -70,14 +70,14 @@ public class DiaryMain {
     private static void createEntry() {
         String title = getInput("Enter the title:\n ");
         String body = getInput("Enter the body of your entry:\n ");
-        diaryController.createEntry(new Diary(), new EntryCreation(title, body));
-        print("Dairy created successfully");
+        print(diaryController.createEntry(new Diary(), new EntryCreation(title, body)));
+
     }
     private static void updateEntry(){
         String title = getInput("Enter the title: ");
         String body = getInput("Enter the new body: ");
-        diaryController.updateEntry(new UpdateRequest(title, body));
-        print("Updated successfully");
+        print(diaryController.updateEntry(new UpdateRequest(title, body)));
+
     }
     private static void findEntry(){
         String title = getInput("Enter your title: ");

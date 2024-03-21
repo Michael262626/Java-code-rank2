@@ -23,7 +23,7 @@ public class DiaryMain {
         String userInput = getInput("""
                                             <<===========>> WELCOME TO MY NEW DIARY <<===============>>
                 <1>  Sign Up                                            <2> Sign In                                                       <3> Exit....
-                       What do you want to do?                           What do you want to do?                                    What do you want to do?
+                 What do you want to do?                          What do you want to do?                                   What do you want to do?
                 """);
 
         switch (userInput) {
@@ -85,9 +85,8 @@ public class DiaryMain {
             case "3" -> findEntry();
             case "4" -> deleteEntry();
             case "5" -> deleteDiary();
-            case "6" -> findDiary();
-            case "7" -> logout();
-            case "8" -> System.exit(101);
+            case "6" -> logout();
+            case "7" -> System.exit(101);
             default -> diaryMenu();
         }
     }
@@ -111,7 +110,7 @@ public class DiaryMain {
     private static void findEntry(){
         String title = getInput("Enter your title: ");
         print(diaryController.findEntry(title.toUpperCase()));
-
+        diaryMenu();
     }
     private static void deleteEntry(){
         String title = getInput("Enter the title to delete entry: ");
@@ -140,14 +139,6 @@ public class DiaryMain {
         }
         print(diaryController.logout(username.toLowerCase()));
         mainMenu();
-    }
-    private static void findDiary(){
-        String username = getInput("Enter your username: ");
-        while(username.trim().isEmpty()){
-            print("Name field is required");
-            username = getInput("Enter your name: ");
-        }
-        print(diaryController.findDiary(username.toLowerCase()));
     }
 
     public static void main(String[] args) {

@@ -13,5 +13,5 @@ public interface EntryServices {
     void findById(String title);
     void save(Entry entry);
     List<Entry> findAll(Entry entry);
-    void updateEntry(UpdateRequest updateEntryRequest);
+    void updateEntry(Entry updateEntryRequest);
 }

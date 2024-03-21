@@ -2,6 +2,7 @@ package Controller;
 
 import Exceptions.*;
 import Model.Diary;
+import Model.Entry;
 import Services.DiaryServicesImplement;
 import dtos.request.DeleteRequest;
 import dtos.request.EntryCreation;
@@ -9,6 +10,7 @@ import dtos.request.LoginRequest;
 import dtos.request.UpdateRequest;
 
 public class DiaryController {
+    private final Entry entry = new Entry();
     private final DiaryServicesImplement diaryServicesImplement = new DiaryServicesImplement();
     public String registerUser(LoginRequest request){
         try{
@@ -37,7 +39,7 @@ public class DiaryController {
     public String findEntry(String title){
         try{
             diaryServicesImplement.findEntry(title);
-            return "Enjoy.....";
+            return String.format(entry.toString());
         }catch (EntryNotFoundException e){
             return (e.getMessage());
         }

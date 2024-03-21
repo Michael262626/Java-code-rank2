@@ -2,20 +2,14 @@ package UserClass;
 
 import Controller.DiaryController;
 import Model.Diary;
-import Model.Entry;
-import Services.DiaryServicesImplement;
 import dtos.request.DeleteRequest;
 import dtos.request.EntryCreation;
 import dtos.request.LoginRequest;
 import dtos.request.UpdateRequest;
-
-import javax.swing.*;
 import java.util.Scanner;
 
 public class DiaryMain {
     static Scanner scanner = new Scanner(System.in);
-    private static final LoginRequest loginRequest = new LoginRequest();
-    private static final EntryCreation entryCreation=new EntryCreation();
     private static final DiaryController diaryController = new DiaryController();
     private static String getInput(String prompt) {
         System.out.print(prompt);
@@ -77,36 +71,36 @@ public class DiaryMain {
         String title = getInput("Enter the title:\n ");
         String body = getInput("Enter the body of your entry:\n ");
         diaryController.createEntry(new Diary(), new EntryCreation(title, body));
-        System.out.println("Dairy created successfully");
+        print("Dairy created successfully");
     }
     private static void updateEntry(){
         String title = getInput("Enter the title: ");
         String body = getInput("Enter the new body: ");
         diaryController.updateEntry(new UpdateRequest(title, body));
-        System.out.println("Updated successfully");
+        print("Updated successfully");
     }
     private static void findEntry(){
         String title = getInput("Enter your title: ");
-        System.out.println(diaryController.findEntry(title));
+        print(diaryController.findEntry(title));
 
     }
     private static void deleteEntry(){
         String title = getInput("Enter the title to delete entry: ");
-        System.out.println(diaryController.deleteEntry(title));
+        print(diaryController.deleteEntry(title));
     }
     private static void deleteDiary(){
         String username = getInput("Enter your name; ");
         String password = getInput("Enter your password: ");
-        System.out.println(diaryController.deleteDiary(new DeleteRequest(username, password)));
+        print(diaryController.deleteDiary(new DeleteRequest(username, password)));
     }
     private static void logout(){
         String username = getInput("Enter your name: ");
-        System.out.println(diaryController.logout(username));
+        print(diaryController.logout(username));
         mainMenu();
     }
     private static void findDiary(){
         String username = getInput("Enter your username: ");
-        System.out.println(diaryController.findDiary(username));
+        print(diaryController.findDiary(username));
     }
 
     public static void main(String[] args) {

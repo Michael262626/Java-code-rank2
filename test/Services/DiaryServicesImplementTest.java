@@ -154,6 +154,8 @@ class DiaryServicesImplementTest {
         request.setPassword("password");
         request.setUsername("username");
         diaryServicesImplement.register(request);
+
+        // Add an entry to the diary
         EntryCreation entryCreation = new EntryCreation();
         entryCreation.setTitle("title");
         entryCreation.setBody("body");

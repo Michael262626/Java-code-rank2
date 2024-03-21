@@ -13,7 +13,6 @@ public class DiaryServicesImplement implements DiaryServices{
 
         private final DiaryRepository diaryRepositories = new DiaryRepositoryImpl();
         private final EntryRepository entryRepositories = new EntryRepositoryImpl();
-        private final LogOutRequest logOutRequest = new LogOutRequest();
         private final EntryServicesImplement entryServicesImplement = new EntryServicesImplement();
 
         @Override

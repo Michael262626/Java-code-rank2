@@ -1,6 +1,14 @@
 package dtos.request;
 
 public class UpdateRequest {
+    public UpdateRequest(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+    public UpdateRequest(){
+
+    }
+
     public int getId() {
         return id;
     }

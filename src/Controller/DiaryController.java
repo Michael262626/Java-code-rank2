@@ -44,14 +44,6 @@ public class DiaryController {
             return (e.getMessage());
         }
     }
-    public String findDiary(String username){
-        try{
-            diaryServicesImplement.findDiaryByUsername(username);
-            return "Diary found";
-        }catch (InvalidUserNameException e){
-            return (e.getMessage());
-        }
-    }
     public String deleteEntry(String title){
         try{
             diaryServicesImplement.deleteAnEntry(title);

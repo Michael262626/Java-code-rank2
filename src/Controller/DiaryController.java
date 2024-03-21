@@ -21,12 +21,12 @@ public class DiaryController {
         }
     }
     public String login(String name, String password){
-        try{
+
             diaryServicesImplement.login(name, password);
             return "Logged in successfully";
-        }catch (InvalidPasswordException | InvalidUserNameException e){
-            return (e.getMessage());
-        }
+
+
+
     }
     public String logout(String name){
         try{
@@ -77,11 +77,7 @@ public class DiaryController {
         }
     }
     public String createEntry(Diary diary, EntryCreation entryCreation){
-        try{
             diaryServicesImplement.addEntry(diary, entryCreation);
             return "Created successfully";
-        }catch (DiaryNotFoundException e){
-            return (e.getMessage());
-        }
     }
 }

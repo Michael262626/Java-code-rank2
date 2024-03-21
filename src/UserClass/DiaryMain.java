@@ -21,8 +21,8 @@ public class DiaryMain {
     private static void mainMenu() {
         String userInput = getInput("""
                 <<===========>> WELCOME TO MY NEW DIARY <<===============>>
-                <1>  Sign Up                          <2> Sign In                          <3> Exit....
-                       What do you want to do?               What do you want to do?                     What do you want to do?
+                <1>  Sign Up                                         <2> Sign In                                                       <3> Exit....
+                       What do you want to do?               What do you want to do?                                        What do you want to do?
                 """);
 
         switch (userInput) {
@@ -36,11 +36,13 @@ public class DiaryMain {
         String username = getInput("Enter your name: ");
         String password = getInput("Enter your password: ");
         print(diaryController.registerUser(new LoginRequest(username.toLowerCase(), password)));
+        diaryMenu();
         }
     private static void login(){
         String username = getInput("Enter your name: ");
         String password = getInput("Enter your password: ");
         print(diaryController.login(username.toLowerCase(), password));
+        diaryMenu();
     }
 
     private static void diaryMenu(){

@@ -1,8 +1,10 @@
 package Controller;
 
 import Exceptions.*;
+import Model.Diary;
 import Services.DiaryServicesImplement;
 import dtos.request.DeleteRequest;
+import dtos.request.EntryCreation;
 import dtos.request.LoginRequest;
 import dtos.request.UpdateRequest;
 
@@ -69,6 +71,14 @@ public class DiaryController {
             diaryServicesImplement.updateEntry(request);
             return "Entry Updated";
         }catch (EntryUpdateException | EntryNotFoundException e){
+            return (e.getMessage());
+        }
+    }
+    public String createEntry(Diary diary, EntryCreation entryCreation){
+        try{
+            diaryServicesImplement.addEntry(diary, entryCreation);
+            return "Created successfully";
+        }catch (DiaryNotFoundException e){
             return (e.getMessage());
         }
     }

@@ -34,14 +34,30 @@ public class DiaryMain {
     }
     private static void register() {
         String username = getInput("Enter your name: ");
+        while(username.trim().isEmpty()){
+            print("Name field is required");
+            username = getInput("Enter your first name: ");
+        }
         String password = getInput("Enter your password: ");
+        while(password.trim().isEmpty()){
+            print("Password field is required");
+            password = getInput("Enter your first name: ");
+        }
         print(diaryController.registerUser(new LoginRequest(username.toLowerCase(), password)));
         diaryMenu();
         }
     private static void login(){
-        String username = getInput("Enter your name: ");
+        String name = getInput("Enter your name to login: ");
+        while(name.trim().isEmpty()){
+            print("Name field is required");
+            name = getInput("Enter your first name: ");
+        }
         String password = getInput("Enter your password: ");
-        print(diaryController.login(username.toLowerCase(), password));
+        while(password.trim().isEmpty()){
+            print("Password field is required");
+            password = getInput("Enter your first name: ");
+        }
+        print(diaryController.login(name.toLowerCase(), password));
         diaryMenu();
     }
 
@@ -55,6 +71,7 @@ public class DiaryMain {
                 <6> Find Diary
                 <7> Home Page
                 <8> Exit......
+                What do you want to do?
                 """);
         switch(option){
             case "1" -> createEntry();
@@ -71,6 +88,10 @@ public class DiaryMain {
 
     private static void createEntry() {
         String title = getInput("Enter the title:\n ");
+        while (title.trim().isEmpty()){
+            print("Title field is required");
+            title = getInput("Enter the title:\n ");
+        }
         String body = getInput("Enter the body of your entry:\n ");
         print(diaryController.createEntry(new Diary(), new EntryCreation(title.toUpperCase(), body)));
 
@@ -89,19 +110,36 @@ public class DiaryMain {
     private static void deleteEntry(){
         String title = getInput("Enter the title to delete entry: ");
         print(diaryController.deleteEntry(title.toUpperCase()));
+        diaryMenu();
     }
     private static void deleteDiary(){
         String username = getInput("Enter your name; ");
+        while(username.trim().isEmpty()){
+            print("Name field is required");
+            username = getInput("Enter your name: ");
+        }
         String password = getInput("Enter your password: ");
+        while(password.trim().isEmpty()){
+            print("Password field is required");
+            password = getInput("Enter your password");
+        }
         print(diaryController.deleteDiary(new DeleteRequest(username.toLowerCase(), password)));
     }
     private static void logout(){
         String username = getInput("Enter your name: ");
+        while(username.trim().isEmpty()){
+            print("Name field is required");
+            username = getInput("Enter your name: ");
+        }
         print(diaryController.logout(username.toLowerCase()));
         mainMenu();
     }
     private static void findDiary(){
         String username = getInput("Enter your username: ");
+        while(username.trim().isEmpty()){
+            print("Name field is required");
+            username = getInput("Enter your name: ");
+        }
         print(diaryController.findDiary(username.toLowerCase()));
     }
 

@@ -39,8 +39,8 @@ public class EntryServicesImplement implements EntryServices{
     }
 
     @Override
-    public void updateEntry(UpdateRequest updateEntryRequest) {
-
+    public void updateEntry(Entry updateEntryRequest) {
+            entryRepository.save(updateEntryRequest);
     }
 
 }

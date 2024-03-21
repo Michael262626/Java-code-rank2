@@ -1,6 +1,7 @@
 package UserClass;
 
 import Controller.DiaryController;
+import Exceptions.InvalidUserNameException;
 import Model.Diary;
 import dtos.request.DeleteRequest;
 import dtos.request.EntryCreation;
@@ -20,9 +21,9 @@ public class DiaryMain {
     }
     private static void mainMenu() {
         String userInput = getInput("""
-                <<===========>> WELCOME TO MY NEW DIARY <<===============>>
-                <1>  Sign Up                                         <2> Sign In                                                       <3> Exit....
-                       What do you want to do?               What do you want to do?                                        What do you want to do?
+                                            <<===========>> WELCOME TO MY NEW DIARY <<===============>>
+                <1>  Sign Up                                            <2> Sign In                                                       <3> Exit....
+                       What do you want to do?                           What do you want to do?                                    What do you want to do?
                 """);
 
         switch (userInput) {
@@ -47,6 +48,7 @@ public class DiaryMain {
         diaryMenu();
         }
     private static void login(){
+        try{
         String name = getInput("Enter your name to login: ");
         while(name.trim().isEmpty()){
             print("Name field is required");
@@ -59,7 +61,11 @@ public class DiaryMain {
         }
         print(diaryController.login(name.toLowerCase(), password));
         diaryMenu();
-    }
+    }catch (InvalidUserNameException e){
+            print(e.getMessage());
+            mainMenu();
+        }
+}
 
     private static void diaryMenu(){
         String option = getInput("""
@@ -124,6 +130,7 @@ public class DiaryMain {
             password = getInput("Enter your password");
         }
         print(diaryController.deleteDiary(new DeleteRequest(username.toLowerCase(), password)));
+        mainMenu();
     }
     private static void logout(){
         String username = getInput("Enter your name: ");

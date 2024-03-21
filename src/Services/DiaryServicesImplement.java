@@ -96,7 +96,6 @@ public class DiaryServicesImplement implements DiaryServices{
             Entry entry = new Entry();
             entry.setTitle(entryCreation.getTitle());
             entry.setBody(entryCreation.getBody());
-            diaryRepositories.findById(diary.getUsername());
             entryRepositories.save(entry);
         }
 

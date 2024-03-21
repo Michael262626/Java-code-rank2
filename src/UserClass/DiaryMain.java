@@ -28,7 +28,7 @@ public class DiaryMain {
         String userInput = getInput("""
                 <<===========>> WELCOME TO MY NEW DIARY <<===============>>
                 <1>  Sign Up                          <2> Sign In                          <3> Exit....
-                                                        What do you want to do?
+                       What do you want to do?               What do you want to do?                     What do you want to do?
                 """);
 
         switch (userInput) {
@@ -77,33 +77,36 @@ public class DiaryMain {
         String title = getInput("Enter the title:\n ");
         String body = getInput("Enter the body of your entry:\n ");
         diaryController.createEntry(new Diary(), new EntryCreation(title, body));
+        System.out.println("Dairy created successfully");
     }
     private static void updateEntry(){
         String title = getInput("Enter the title: ");
         String body = getInput("Enter the new body: ");
         diaryController.updateEntry(new UpdateRequest(title, body));
+        System.out.println("Updated successfully");
     }
     private static void findEntry(){
         String title = getInput("Enter your title: ");
-        diaryController.findEntry(title);
+        System.out.println(diaryController.findEntry(title));
+
     }
     private static void deleteEntry(){
         String title = getInput("Enter the title to delete entry: ");
-        diaryController.deleteEntry(title);
+        System.out.println(diaryController.deleteEntry(title));
     }
     private static void deleteDiary(){
         String username = getInput("Enter your name; ");
         String password = getInput("Enter your password: ");
-        diaryController.deleteDiary(new DeleteRequest(username, password));
+        System.out.println(diaryController.deleteDiary(new DeleteRequest(username, password)));
     }
     private static void logout(){
         String username = getInput("Enter your name: ");
-        diaryController.logout(username);
+        System.out.println(diaryController.logout(username));
         mainMenu();
     }
     private static void findDiary(){
         String username = getInput("Enter your username: ");
-        diaryController.findDiary(username);
+        System.out.println(diaryController.findDiary(username));
     }
 
     public static void main(String[] args) {

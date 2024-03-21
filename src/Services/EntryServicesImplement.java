@@ -2,18 +2,20 @@ package Services;
 
 import Model.Entry;
 import Repository.EntryRepositoryImpl;
+import dtos.request.UpdateRequest;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class EntryServicesImplement implements EntryServices{
 
-    private EntryRepositoryImpl entryRepository = new EntryRepositoryImpl();
-    private List<Entry>entries = new ArrayList<>();
+    private final EntryRepositoryImpl entryRepository = new EntryRepositoryImpl();
+    private final List<Entry>entries = new ArrayList<>();
     @Override
     public void createEntry(Entry entry) {
        entryRepository.save(entry);
     }
+
 
     @Override
     public void deleteEntry(Entry entry) {
@@ -37,7 +39,8 @@ public class EntryServicesImplement implements EntryServices{
     }
 
     @Override
-    public void findById() {
+    public void updateEntry(UpdateRequest updateEntryRequest) {
 
     }
+
 }

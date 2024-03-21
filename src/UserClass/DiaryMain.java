@@ -35,12 +35,12 @@ public class DiaryMain {
     private static void register() {
         String username = getInput("Enter your name: ");
         String password = getInput("Enter your password: ");
-        diaryController.registerUser(new LoginRequest(username, password));
+        print(diaryController.registerUser(new LoginRequest(username, password)));
         }
     private static void login(){
         String username = getInput("Enter your name: ");
         String password = getInput("Enter your password: ");
-        diaryController.login(username, password);
+        print(diaryController.login(username, password));
     }
 
     private static void diaryMenu(){

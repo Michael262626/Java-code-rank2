@@ -4,8 +4,10 @@ import Controller.DiaryController;
 import Model.Diary;
 import Model.Entry;
 import Services.DiaryServicesImplement;
+import dtos.request.DeleteRequest;
 import dtos.request.EntryCreation;
 import dtos.request.LoginRequest;
+import dtos.request.UpdateRequest;
 
 import javax.swing.*;
 import java.util.Scanner;
@@ -26,6 +28,7 @@ public class DiaryMain {
         String userInput = getInput("""
                 <<===========>> WELCOME TO MY NEW DIARY <<===============>>
                 <1>  Sign Up                          <2> Sign In                          <3> Exit....
+                                                        What do you want to do?
                 """);
 
         switch (userInput) {
@@ -53,8 +56,9 @@ public class DiaryMain {
                 <3> Find Entry
                 <4> Delete Entry
                 <5> Delete Diary
-                <6> Home Page
-                <7> Exit... 
+                <6> Find Diary
+                <7> Home Page
+                <8> Exit......
                 """);
         switch(option){
             case "1" -> createEntry();
@@ -62,16 +66,49 @@ public class DiaryMain {
             case "3" -> findEntry();
             case "4" -> deleteEntry();
             case "5" -> deleteDiary();
-            case "5" -> mainMenu();
-            case "6" -> System.exit(101);
-            case default -> diaryMenu();
+            case "6" -> findDiary();
+            case "7" -> logout();
+            case "8" -> System.exit(101);
+            default -> diaryMenu();
         }
     }
 
     private static void createEntry() {
         String title = getInput("Enter the title:\n ");
         String body = getInput("Enter the body of your entry:\n ");
-        diaryController.createEntry(new EntryCreation(title, body));
+        diaryController.createEntry(new Diary(), new EntryCreation(title, body));
+    }
+    private static void updateEntry(){
+        String title = getInput("Enter the title: ");
+        String body = getInput("Enter the new body: ");
+        diaryController.updateEntry(new UpdateRequest(title, body));
+    }
+    private static void findEntry(){
+        String title = getInput("Enter your title: ");
+        diaryController.findEntry(title);
+    }
+    private static void deleteEntry(){
+        String title = getInput("Enter the title to delete entry: ");
+        diaryController.deleteEntry(title);
+    }
+    private static void deleteDiary(){
+        String username = getInput("Enter your name; ");
+        String password = getInput("Enter your password: ");
+        diaryController.deleteDiary(new DeleteRequest(username, password));
+    }
+    private static void logout(){
+        String username = getInput("Enter your name: ");
+        diaryController.logout(username);
+        mainMenu();
+    }
+    private static void findDiary(){
+        String username = getInput("Enter your username: ");
+        diaryController.findDiary(username);
+    }
+
+    public static void main(String[] args) {
+        mainMenu();
+        diaryMenu();
     }
 }
 

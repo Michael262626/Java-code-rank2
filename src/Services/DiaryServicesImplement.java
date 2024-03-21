@@ -9,8 +9,6 @@ import Repository.EntryRepository;
 import Repository.EntryRepositoryImpl;
 import dtos.request.*;
 
-import java.util.Objects;
-
 public class DiaryServicesImplement implements DiaryServices{
 
         private final DiaryRepository diaryRepositories = new DiaryRepositoryImpl();

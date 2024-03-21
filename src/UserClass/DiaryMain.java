@@ -35,12 +35,12 @@ public class DiaryMain {
     private static void register() {
         String username = getInput("Enter your name: ");
         String password = getInput("Enter your password: ");
-        print(diaryController.registerUser(new LoginRequest(username, password)));
+        print(diaryController.registerUser(new LoginRequest(username.toLowerCase(), password)));
         }
     private static void login(){
         String username = getInput("Enter your name: ");
         String password = getInput("Enter your password: ");
-        print(diaryController.login(username, password));
+        print(diaryController.login(username.toLowerCase(), password));
     }
 
     private static void diaryMenu(){
@@ -70,37 +70,37 @@ public class DiaryMain {
     private static void createEntry() {
         String title = getInput("Enter the title:\n ");
         String body = getInput("Enter the body of your entry:\n ");
-        print(diaryController.createEntry(new Diary(), new EntryCreation(title, body)));
+        print(diaryController.createEntry(new Diary(), new EntryCreation(title.toUpperCase(), body)));
 
     }
     private static void updateEntry(){
         String title = getInput("Enter the title: ");
         String body = getInput("Enter the new body: ");
-        print(diaryController.updateEntry(new UpdateRequest(title, body)));
+        print(diaryController.updateEntry(new UpdateRequest(title.toUpperCase(), body)));
 
     }
     private static void findEntry(){
         String title = getInput("Enter your title: ");
-        print(diaryController.findEntry(title));
+        print(diaryController.findEntry(title.toUpperCase()));
 
     }
     private static void deleteEntry(){
         String title = getInput("Enter the title to delete entry: ");
-        print(diaryController.deleteEntry(title));
+        print(diaryController.deleteEntry(title.toUpperCase()));
     }
     private static void deleteDiary(){
         String username = getInput("Enter your name; ");
         String password = getInput("Enter your password: ");
-        print(diaryController.deleteDiary(new DeleteRequest(username, password)));
+        print(diaryController.deleteDiary(new DeleteRequest(username.toLowerCase(), password)));
     }
     private static void logout(){
         String username = getInput("Enter your name: ");
-        print(diaryController.logout(username));
+        print(diaryController.logout(username.toLowerCase()));
         mainMenu();
     }
     private static void findDiary(){
         String username = getInput("Enter your username: ");
-        print(diaryController.findDiary(username));
+        print(diaryController.findDiary(username.toLowerCase()));
     }
 
     public static void main(String[] args) {
